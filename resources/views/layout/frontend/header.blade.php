@@ -1,111 +1,203 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en-US">
-<head>
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="SemiColonWeb" />
-
-	<!-- Stylesheets
-	============================================= -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&amp;display=swap" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/css/bootstrap.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/style.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/css/swiper.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/css/dark.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/css/font-icons.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/css/animate.css')}}" type="text/css" />
-	<link rel="stylesheet" href="{{asset('assetfront/css/magnific-popup.css')}}" type="text/css" />
-
-	<link rel="stylesheet" href="{{asset('assetfront/css/custom.css')}}" type="text/css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-	<!-- Document Title
-	============================================= -->
-	<title>Polls Map</title>
-
-</head>
-
-<?php
-use Illuminate\Support\Facades\DB;
-$navigation = DB::table('categories')->get();
-//return $navigation;die();
-
-?>
-
-<body class="stretched">
-
-	<!-- Document Wrapper
-	============================================= -->
-	<div id="wrapper" class="clearfix">
-
-<header id="header" class="full-header">
-	<div id="header-wrap">
-		<div class="container">
-			<div class="header-row">
-
-				<!-- Logo
-				============================================= -->
-				<div id="logo">
-					<a href="index.html" class="standard-logo" data-dark-logo="{{asset('assetfront/images/logo.png')}}"><img src="{{asset('assetfront/images/logo.png')}}" alt="Canvas Logo"></a>
-					<a href="index.html" class="retina-logo" data-dark-logo="{{asset('assetfront/images/logo%402x.png')}}"><img src="{{asset('assetfront/images/logo%402x.png')}}" alt="Canvas Logo"></a>
-				</div><!-- #logo end -->
-
-				<div class="header-misc">
-
-					<!-- Top Search
-					============================================= -->
-					<!-- <div id="top-search" class="header-misc-icon">
-						<a href="#" id="top-search-trigger"><i class="icon-line-search"></i><i class="icon-line-cross"></i></a>
-					</div> --><!-- #top-search end -->
-
-					<!-- Top Cart
-					============================================= -->
-					
-
-				</div>
-
-				<div id="primary-menu-trigger">
-					<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
-				</div>
-
-				<!-- Primary Navigation
-				============================================= -->
-				<nav class="primary-menu">
-
-					<ul class="menu-container">
-						<li class="menu-item">
-							<a class="menu-link" href="/"><div>Home</div></a>
-						</li>
-						{{-- @foreach ( $navigation as $nav_results)
-						<li class="menu-item">
-							@if($nav_results->id =='6')
-							   <a class="menu-link" href="{{ url('ourteam') }}"><div>{{$nav_results->name}}</div></a>
-							@else
-							<a class="menu-link" href="{{$nav_results->id}}/{{str_replace(' ', '-', $nav_results->name)}}/"><div>{{$nav_results->name}}</div></a>
-							@endif
-						</li>
-						@endforeach --}}
-
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/1/types-of-studies') }}"><div>Types Of Studies</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/2/who-we-are') }}"><div>Who We Are</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/3/what-we-do') }}"><div>What We Do</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/4/our-strengths') }}"><div>Our Strengths</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/5/experience') }}"><div>Experience</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('ourteam') }}"><div>Our Team</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/7/our-clients') }}"><div>Our Clients</div></a></li>
-						<li class="menu-item"><a class="menu-link" href="{{ url('details/8/news') }}"><div>News</div></a></li>
-						
-
-					</ul>
-
-				</nav><!-- #primary-menu end -->
-
-				<form class="top-search-form" action="http://themes.semicolonweb.com/html/canvas/search.html" method="get">
-					<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter.." autocomplete="off">
-				</form>
-
-			</div>
-		</div>
-	</div>
-	<div class="header-wrap-clone"></div>
-</header>
+    <body>
+        <!--loader-->
+        <div class="loader-wrap">
+            <div class="loader-inner">
+                <svg>
+                    <defs>
+                        <filter id="goo">
+                            <fegaussianblur in="SourceGraphic" stdDeviation="2" result="blur" />
+                            <fecolormatrix in="blur"   values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -2" result="gooey" />
+                            <fecomposite in="SourceGraphic" in2="gooey" operator="atop"/>
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        <!--loader end-->
+        <!-- main -->
+        <div id="main">
+            <!-- header -->
+            <header class="main-header">
+                <!--  logo  -->
+                <div class="logo-holder"><a href="index.html"><img src="{{asset('assetfront/images/logo.png')}}" alt=""></a></div>
+                <!-- logo end  -->
+                <!-- nav-button-wrap--> 
+                <div class="nav-button-wrap color-bg nvminit">
+                    <div class="nav-button">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <!-- nav-button-wrap end-->	
+                
+                <!--  add new  btn -->
+                @if (Auth::check())
+                <div class="add-list_wrap show-reg-form modal-open">
+                   <span style="padding-right: 10px;">{{ Auth::user()->name }}</span> <a href="{{ route('logout') }}" class="add-list color-bg" onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+     <i class="fal fa-user"></i> Signout</a>
+                </div>
+                @else
+                <div class="add-list_wrap show-reg-form modal-open">
+                    <a href="#" class="add-list color-bg"><i class="fal fa-user"></i> <span>Sign In / Register</span></a>
+                </div>
+                @endif
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <!--  add new  btn end -->
+               
+                <!--  cart-btn   -->
+                <div class="cart-btn  tolt show-header-modal" data-microtip-position="bottom"  data-tooltip="Your Quotes / Orders">
+                    <i class="fal fa-bell"></i>
+                    <span class="cart-btn_counter color-bg">5</span>
+                </div>
+                <!--  cart-btn end -->
+                 <!--  header-opt_btn -->
+                 <div class="header-opt_btn tolt" data-microtip-position="bottom"  data-tooltip="Country / Currency">
+                    <span><i class="fal fa-globe"></i></span>
+                </div>
+                <!--  header-opt_btn end -->
+               
+               
+               			
+                <!-- wishlist-wrap--> 
+                <div class="header-modal novis_wishlist tabs-act">
+                    <ul class="tabs-menu fl-wrap no-list-style">
+                        <li class="current"><a href="#tab-wish">  Quotes <span>- 3</span></a></li>
+                        <li><a href="#tab-compare">  Orders <span>- 2</span></a></li>
+                    </ul>
+                    <!--tabs -->                       
+                    <div class="tabs-container">
+                        <div class="tab">
+                            <!--tab -->
+                            <div id="tab-wish" class="tab-content first-tab">
+                                <!-- header-modal-container--> 
+                                <div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar>
+                                    <!--widget-posts-->
+                                    <div class="widget-posts  fl-wrap">
+                                        <ul class="no-list-style">
+                                            <li>
+                                                <div class="widget-posts-img"><a href="#"><img src="images/all/small/1.jpg" alt=""></a>  
+                                                </div>
+                                                <div class="widget-posts-descr">
+                                                    <h4><a href="#">Red Dried Peppers</a></h4>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-cube"></i> variant name, Quality</a></div>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i> Sri Lanka, COL</a></div>
+                                                    <div class="widget-posts-descr-price"><span>Quote Price: </span> $ 1500.00</div>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-clock"></i>  <small>just now</small> </a></div>
+                                                    <div class="clear-wishlist"><i class="fal fa-trash-alt"></i></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="widget-posts-img"><a href="#"><img src="images/all/small/1.jpg" alt=""></a>  
+                                                </div>
+                                                <div class="widget-posts-descr">
+                                                    <h4><a href="#">Red Dried Peppers</a></h4>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-cube"></i> variant name, Quality</a></div>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i> Sri Lanka, COL</a></div>
+                                                    <div class="widget-posts-descr-price"><span>Quote Price: </span> $ 1500.00</div>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-clock"></i>  <small>1 day ago</small> </a></div>
+                                                    <div class="clear-wishlist"><i class="fal fa-trash-alt"></i></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="widget-posts-img"><a href="#"><img src="images/all/small/1.jpg" alt=""></a>  
+                                                </div>
+                                                <div class="widget-posts-descr">
+                                                    <h4><a href="#">Red Dried Peppers</a></h4>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-cube"></i> variant name, Quality</a></div>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i> Sri Lanka, COL</a></div>
+                                                    <div class="widget-posts-descr-price"><span>Quote Price: </span> $ 1500.00</div>
+                                                    <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-clock"></i>  <small>3 days ago</small> </a></div>
+                                                    <div class="clear-wishlist"><i class="fal fa-trash-alt"></i></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- widget-posts end-->
+                                </div>
+                                <!-- header-modal-container end--> 
+                                <div class="header-modal-top fl-wrap">
+                                    <div class="clear_wishlist color-bg"><i class="fal fa-trash-alt"></i> Clear all</div>
+                                </div>
+                            </div>
+                            <!--tab end -->
+                            <!--tab -->
+                            <div class="tab">
+                                <div id="tab-compare" class="tab-content">
+                                    <!-- header-modal-container--> 
+                                    <div class="header-modal-container scrollbar-inner fl-wrap" data-simplebar>
+                                        <!--widget-posts-->
+                                        <div class="widget-posts  fl-wrap">
+                                            <ul class="no-list-style">
+                                                <li>
+                                                    <div class="widget-posts-img"><a href="#"><img src="images/all/small/1.jpg" alt=""></a>  
+                                                    </div>
+                                                    <div class="widget-posts-descr">
+                                                        <h4><a href="#">Red Dried Peppers</a></h4>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-cube"></i> variant name, Quality</a></div>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i>  Sri Lanka, COl </a></div>
+                                                        
+                                                        <div class="widget-posts-descr-price"><span>Status: </span> Good Ready</div>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-clock"></i>  <small>just now</small> </a></div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="widget-posts-img"><a href="#"><img src="images/all/small/1.jpg" alt=""></a>  
+                                                    </div>
+                                                    <div class="widget-posts-descr">
+                                                        <h4><a href="#">Red Dried Peppers</a></h4>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-cube"></i> variant name, Quality</a></div>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i>  Sri Lanka, COl </a></div>
+                                                        
+                                                        <div class="widget-posts-descr-price"><span>Status: </span> Good Ready</div>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-clock"></i>  <small>just now</small> </a></div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- widget-posts end-->
+                                    </div>
+                                    <!-- header-modal-container end--> 										
+                                    <div class="header-modal-top fl-wrap">
+                                        <a class="clear_wishlist color-bg" href="#"><i class="fal fa-random"></i> View Orders</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--tab end -->
+                        </div>
+                        <!--tabs end -->							
+                    </div>
+                </div>
+                <!--wishlist-wrap end -->                            
+                <!--header-opt-modal-->  
+                <div class="header-opt-modal novis_header-mod">
+                    <div class="header-opt-modal-container hopmc_init">
+                        <div class="header-opt-modal-item lang-item fl-wrap">
+                            <h4>Country: <span>India</span></h4>
+                            <div class="header-opt-modal-list fl-wrap">
+                                <ul>
+                                    <li><a href="#" class="current-lan" data-lantext="EN">India</a></li>
+                                    <li><a href="#" data-lantext="FR">France</a></li>
+                                    <li><a href="#" data-lantext="ES">Sri Lanka</a></li>
+                                    <li><a href="#" data-lantext="DE">Singapore</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header-opt-modal-item currency-item fl-wrap">
+                            <h4>Currency: <span>USD</span></h4>
+                            <div class="header-opt-modal-list fl-wrap">
+                                <ul>
+                                    <li><a href="#" class="current-lan" data-lantext="USD">USD</a></li>
+                                    <li><a href="#" data-lantext="EUR">EUR</a></li>
+                                    <li><a href="#" data-lantext="GBP">GBP</a></li>
+                                    <li><a href="#" data-lantext="RUR">RUR</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--header-opt-modal end -->  
+            </header>
+            <!-- header end  -->

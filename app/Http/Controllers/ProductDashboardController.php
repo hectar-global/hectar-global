@@ -9,7 +9,7 @@ class ProductDashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $prod_id = $request->id;
+        $prod_id = $request->prod_id;
 
         $product = Product::with('category')->where('id', $prod_id)->first();
 

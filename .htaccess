@@ -4,7 +4,7 @@
     </IfModule>
 
     RewriteEngine On
-    RewriteBase /var/www/aamarasom.com/public/
+    RewriteBase /var/www/html/hectar/public/
    # change above to your site i.e.,  RewriteBase /whatever/public/
 
     # Redirect Trailing Slashes...

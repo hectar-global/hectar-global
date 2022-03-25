@@ -75,7 +75,7 @@
                 {{-- <i class="right fas fa-angle-left"></i> --}}
               </p>
             </a>
-            <ul>
+            {{-- <ul>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
@@ -105,35 +105,51 @@
                   </li>
                 </ul>
               </li>
-            </ul>
+            </ul> --}}
 
-            <ul>
+            {{-- <ul>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Manage Prices
-                    {{-- <i class="fas fa-angle-left right"></i> --}}
                   </p>
                 </a>
                 
               </li>
-            </ul>
+            </ul> --}}
 
 
             <ul>
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/variants/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Variant Specifications
-                    {{-- <i class="fas fa-angle-left right"></i> --}}
                   </p>
                 </a>
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/type/'). '/'.request()->route()->prod_id }}" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Type
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="{{ url('/quality/'). '/'.request()->route()->prod_id }}" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Quality
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="{{ url('/freight/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Freight Pricing
@@ -143,7 +159,7 @@
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/packaging/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Packaging Options
@@ -153,7 +169,7 @@
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/certificate/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Certifications
@@ -178,7 +194,7 @@
 
             <ul>
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/product-description/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Product Description
@@ -188,7 +204,7 @@
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/farming-production/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Farming/Production
@@ -198,7 +214,7 @@
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="{{ url('/gallery/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
                     Gallery

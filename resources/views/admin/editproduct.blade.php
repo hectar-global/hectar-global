@@ -3,7 +3,8 @@
 
 {{-- @extends('layout.admin.adminmain') --}}
 
-@extends('layout.admin.admin-main-home')
+{{-- @extends('layout.admin.admin-main-home') --}}
+@extends('layout.admin.product-dashboard-main')
 
 
 @section('title', 'Amar Asom')
@@ -19,13 +20,16 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          {{-- <h1 class="m-0 text-dark">Add Category</h1> --}}
+          <ol class="breadcrumb float-sm-left">
+            <li class="breadcrumb-item"><a href="#">Product</a></li>
+            <li class="breadcrumb-item active">{{$products->name}}</li>
+          </ol>
         </div><!-- /.col -->
         <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
+          {{-- <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Product</a></li>
             <li class="breadcrumb-item active">Edit</li>
-          </ol>
+          </ol> --}}
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -35,115 +39,168 @@
    <!-- Main content -->
    <section class="content">
     <div class="container-fluid">
-        <form action="{{url('/update-product/'.$products->id)}}" method="POST" name="editNews" id="editNews" enctype="multipart/form-data">
-            @csrf
-      <!-- SELECT2 EXAMPLE -->
-      <div class="card card-default">
-        <div class="card-header">
-          <h3 class="card-title">Edit Product</h3>
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><span style="text-align: left; font-weight:bold;">Overview</span> <span style="padding-left:50px; font-weight:bold;">{{$products->status =="0"? "inactive": "Active"}}</span></li>
+              
+              <li class="list-group-item">
+                <div>
+                  <div style="float: left;"> 
+                    Created on :
+                  </div>
+                  <div style="float: left; padding-left:10px;">{{$products->created_at->format('M d Y')}}</div>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div>
+                  <div style="float: left;"> 
+                    Updated on :
+                  </div>
+                  <div style="float: left; padding-left:10px;">{{$products->updated_at->format('M d Y')}}</div>
+                </div>
+              </li>
+
+              <li class="list-group-item" style="text-align: center; font-weight:bold;"><a href="{{ url('/product-details/').'/'.$products->id }}" target="_blank">Visit Page</a></li>
+            </ul>
           </div>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="exampleInputpTitle">Product Name</label>
-                <input type="text" value="{{old('name', $products->name)}}" name="name" id="name" aria-describedby="pnameHelp" placeholder="Enter Name" class="form-control {{($errors->any() && $errors->first('name')) ? 'is-invalid' : ''}}">
-                </div>
-              </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-          <?php $selected = explode(",", $products->category_id); ?>
-          <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label>Category</label>
-                    <select name="category[]" multiple="multiple" id="category_id" class="form-control select2 {{($errors->any() && $errors->first('category_id')) ? 'is-invalid' : ''}}" style="width: 100%;">
-                        <option value="">-- Select Product Category --</option>
-                        @foreach($categories as $category)
-                          <option value="{{$category->id}}"  {{ (in_array($category->id, $selected)) ? 'selected' : '' }}>{{$category['name']}}</option>
-                        @endforeach
-                    </select>
-                        @if($errors->any())
-                            <p class="invalid-feedback">{{$errors->first('category')}}</p>
-                        @endif
-                </div>
-            </div>
-                <!-- /.col -->
+        <!-- ./col -->
+        <div>  <span style="display:inline-block;margin-left:50px"></span>  </div>
 
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label for="exampleInputpCountry">Country</label>
-                    <input type="text" value="{{old('country', $products->country)}}" name="country" id="country" aria-describedby="pcountryHelp" placeholder="Enter Country" class="form-control {{($errors->any() && $errors->first('country')) ? 'is-invalid' : ''}}">
+        <div class="col-lg-3 col-6">
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><span style="text-align: left; font-weight:bold;">Page Setup</span></li>
+              <li class="list-group-item">
+                <div>
+                  <div style="float: left;"> 
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
                   </div>
+                  <div style="float: left; padding-left:10px;">Production description</div>
                 </div>
-                    <!-- /.col -->
+              </li>
 
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" class="form-control" value="{{old('price', $products->price)}}" name="price" id="price" aria-describedby="priceHelp" placeholder="Enter Price" class="form-control {{($errors->any() && $errors->first('price')) ? 'is-invalid' : ''}}">
-                    </div>
+              <li class="list-group-item">
+                <div>
+                  <div style="float: left;"> 
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div style="float: left; padding-left:10px;">Certification</div>
                 </div>
-                    <!-- /.col -->
+              </li>
+
+              <li class="list-group-item">
+                <div>
+                  <div style="float: left;"> 
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div style="float: left; padding-left:10px;">Farming/Production</div>
+                </div>
+              </li>
+
+              <li class="list-group-item">
+                <div>
+                  <div style="float: left;"> 
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div style="float: left; padding-left:10px;">Product Status</div>
+                </div>
+              </li>
+              
+            </ul>
           </div>
-          <!-- /.row -->
+        </div>
+        <!-- ./col -->
 
 
-          <div class="row">
-           
 
-            <div class="col-md-4 col-sm-12">
+
+        <div>  <span style="display:inline-block;margin-left:50px"></span>  </div>
+        <form action="{{url('/update-product/'.$products->id)}}" method="POST" name="editNews" id="editNews" enctype="multipart/form-data">
+          @csrf
+        <div class="col-lg-3 col-6">
+          <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+               @if($products->image)
+                <img src="{{asset('uploads/posts/'.$products->image)}}" style="width: 250px; heght:400px;">
+                @else
+                <img src="{{asset('uploads/posts/no-image-available.jpg')}}" style="width: 250px; heght:400px;">
+                @endif
+
                 <div class="form-group">
-                  <label for="exampleInputFile">Image</label>
+                  {{-- <label for="exampleInputFile">Image</label> --}}
                   <div class="custom-file">
                     <input type="file" class="custom-file-input" name="image1" id="image1">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                     <input type="hidden" name="image" id="image" value="{{old('image', $products->image)}}">
                   </div>
                 </div>
-              </div>
+              </li>
+              <li class="list-group-item">
+                <div style="float: left; padding-left:10px;">
+                  
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="exampleInputpTitle">Product Name</label>
+                        <input type="text" value="{{old('name', $products->name)}}" name="name" id="name" aria-describedby="pnameHelp" placeholder="Enter Name" class="form-control {{($errors->any() && $errors->first('name')) ? 'is-invalid' : ''}}">
+                        </div>
+                    </div>
 
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label>Status</label>
-                    <select name="status" id="status" class="form-control select2 {{($errors->any() && $errors->first('status')) ? 'is-invalid' : ''}}" style="width: 100%;">
-                        <option>-- Select --</option>
-                        <option value="1"  {{ $products->status == 1 ? 'selected="selected"' : '' }}" >Active</option>
-                        <option value="0"  {{ $products->status == 0 ? 'selected="selected"' : '' }}" >Diactive</option>
-                    </select>
-                        @if($errors->any())
-                            <p class="invalid-feedback">{{$errors->first('status')}}</p>
-                        @endif
+                    <div class="row">
+                      <div class="col-md-4 col-sm-12">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </div>
+    
+                      <div class="col-md-4 col-sm-12">
+                        <button type="reset" class="btn btn-primary">Cancel</button>
+                      </div>
+                    </div>
+                    <!-- /.col -->
+                  
                 </div>
-            </div>
+              </li>
 
-          </div>
-        
-          <!-- /.row -->
+              {{-- <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-4 col-sm-12">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
 
-          <div class="row">
-            <div class="col-md-4 col-sm-12">
-              <button type="submit" class="btn btn-primary">Update</button>
-            </div>
+                  <div class="col-md-4 col-sm-12">
+                    <button type="button" class="btn btn-primary">Cancel</button>
+                  </div>
+                </div>
+              </li> --}}
+              
+            </ul>
           </div>
-          
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          {{-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-          the plugin. --}}
-        </div>
+      </form>
+        <!-- ./col -->
+
+
       </div>
-      <!-- /.card -->
-        </form>
+      <!-- /.row -->
+      <!-- Main row -->
+
     </div><!-- /.container-fluid -->
   </section>
   <!-- /.content -->

@@ -1,243 +1,199 @@
-<footer id="footer" class="dark">
-    <div class="container">
-
-        <!-- Footer Widgets
-        ============================================= -->
-        <div class="footer-widgets-wrap">
-
-            <div class="row col-mb-50">
-                <div class="col-lg-8">
-
-                    <div class="row col-mb-50">
-                        <div class="col-md-4">
-
-                            <div class="widget clearfix">
-
-                                <img src="{{asset('assetfront/images/footer-widget-logo.png')}}" alt="Image" class="footer-logo">
-
-                                <p>India largest servey research organization having sole focus on development and social sectors</p>
-
-                                <div style="background: url('{{asset('assetfront/images/world-map.png')}}') no-repeat center center; background-size: 100%;">
-                                    <address>
-                                        <strong>Head Office:</strong><br>
-                                        Sawan Park, Ashok Vihar, <br />Phase -3<br>
-                                        New Delhi, 110052<br>
-                                    </address>
-                                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> (+91) 12345678<br>
-                                    <abbr title="Fax"><strong>Fax:</strong></abbr> (+91) 11 12345678<br>
-                                    <abbr title="Email Address"><strong>Email:</strong></abbr> info@pollsmap.com
-                                </div>
-
-                            </div>
-
+<!-- footer -->	
+<footer class="main-footer fl-wrap">
+    <div class="footer-inner fl-wrap">
+        <div class="container">
+            <div class="row">
+                <!-- footer widget-->
+                <div class="col-md-3">
+                    <div class="footer-widget fl-wrap">
+                        <div class="footer-widget-logo fl-wrap">
+                            <img src="images/logo.png" alt="">
                         </div>
-
-                        <div class="col-md-4">
-
-                            <div class="widget widget_links clearfix">
-
-                                <h4>Information</h4>
-
-                                <ul>
-                                    <li><a href="https://codex.wordpress.org/">About Us</a></li>
-                                    <li><a href="https://wordpress.org/support/forum/requests-and-feedback">Out Team</a></li>
-                                    <li><a href="https://wordpress.org/extend/plugins/">Our Strengths</a></li>
-                                    <li><a href="https://wordpress.org/support/">Our Spread</a></li>
-                                    <li><a href="https://wordpress.org/extend/themes/">Our Experience</a></li>
-                                    <li><a href="https://wordpress.org/news/">Our Clients</a></li>
-                                    <li><a href="https://planet.wordpress.org/">Contact Us</a></li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-4">
-
-                            <div class="widget clearfix">
-                                <h4>Recent Posts</h4>
-
-                                <div class="posts-sm row col-mb-30" id="post-list-footer">
-                                    <div class="entry col-12">
-                                        <div class="grid-inner row">
-                                            <div class="col">
-                                                <div class="entry-title">
-                                                    <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-                                                </div>
-                                                <div class="entry-meta">
-                                                    <ul>
-                                                        <li>10th July 2021</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="entry col-12">
-                                        <div class="grid-inner row">
-                                            <div class="col">
-                                                <div class="entry-title">
-                                                    <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-                                                </div>
-                                                <div class="entry-meta">
-                                                    <ul>
-                                                        <li>10th July 2021</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="entry col-12">
-                                        <div class="grid-inner row">
-                                            <div class="col">
-                                                <div class="entry-title">
-                                                    <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-                                                </div>
-                                                <div class="entry-meta">
-                                                    <ul>
-                                                        <li>10th July 2021</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
+                        <div class="fw_hours fl-wrap">
+                            <span>Monday - Friday:<strong> 8am - 6pm</strong></span>
+                            <span>Saturday - Sunday:<strong> 9am - 3pm</strong></span>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="col-lg-4">
-
-                    <div class="row col-mb-50">
-                        <div class="col-md-4 col-lg-12">
-                            <div class="widget clearfix" style="margin-bottom: -20px;">
-
-                                <!-- <div class="row">
-                                    <div class="col-lg-6 bottommargin-sm">
-                                        <div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-                                        <h5 class="mb-0">Total Downloads</h5>
-                                    </div>
-
-                                    <div class="col-lg-6 bottommargin-sm">
-                                        <div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
-                                        <h5 class="mb-0">Clients</h5>
-                                    </div>
-                                </div> -->
-
-                            </div>
+                <!-- footer widget end-->
+                <!-- footer widget-->
+                <div class="col-md-3">
+                    <div class="footer-widget fl-wrap">
+                        <div class="footer-widget-title fl-wrap">
+                            <h4>Helpful links</h4>
                         </div>
-
-                        <div class="col-md-5 col-lg-12">
-                            <div class="widget subscribe-widget clearfix">
-                                <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
-                                <div class="widget-subscribe-form-result"></div>
-                                <form id="widget-subscribe-form" action="http://themes.semicolonweb.com/html/canvas/include/subscribe.php" method="post" class="mb-0">
-                                    <div class="input-group mx-auto">
-                                        <div class="input-group-text"><i class="icon-email2"></i></div>
-                                        <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
-                                        <button class="btn btn-success" type="submit">Subscribe</button>
+                        <ul class="footer-list fl-wrap">
+                            <li><a href="about.html">About Our Company</a></li>
+                            <li><a href="blog.html">Our last News</a></li>
+                            <li><a href="pricing.html">Pricing Plans</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="help.html">Help Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- footer widget end--> 
+                <!-- footer widget-->
+                <div class="col-md-3">
+                    <div class="footer-widget fl-wrap">
+                        <div class="footer-widget-title fl-wrap">
+                            <h4>Contacts Info</h4>
+                        </div>
+                        <ul  class="footer-contacts fl-wrap">
+                            <li><span><i class="fal fa-envelope"></i> Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
+                            <li> <span><i class="fal fa-map-marker"></i> Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
+                            <li><span><i class="fal fa-phone"></i> Phone :</span><a href="#">+7(111)123456789</a></li>
+                        </ul>
+                        <div class="footer-social fl-wrap">
+                            <ul>
+                                <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer widget end-->   
+                <!-- footer widget-->
+                <div class="col-md-3">
+                    <div class="footer-widget fl-wrap">
+                        <div class="footer-widget-title fl-wrap">
+                            <h4>Download our apps</h4>
+                        </div>
+                        <p>Start working with Hectar that can provide everything you need </p>
+                        <div class="api-links fl-wrap">
+                            <a href="#" class="api-btn color-bg"><i class="fab fa-apple"></i> App Store</a>  
+                            <a href="#" class="api-btn color-bg"><i class="fab fa-google-play"></i> Play Market</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer widget end-->                                     
+            </div>
+        </div>
+    </div>
+    <!--sub-footer-->
+    <div class="sub-footer gray-bg fl-wrap">
+        <div class="container">
+            <div class="copyright"> &#169; Hectar 2022 .  All rights reserved.</div>
+            <div class="subfooter-nav">
+                <ul class="no-list-style">
+                    <li><a href="#">Terms of use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--sub-footer end -->                     
+</footer>
+<!-- footer end -->
+</div>
+<!-- wrapper end -->
+<!--register form -->
+<div class="main-register-wrap modal">
+<div class="reg-overlay"></div>
+<div class="main-register-holder tabs-act">
+    <div class="main-register-wrapper modal_main fl-wrap">
+        <div class="main-register-header color-bg">
+            <div class="main-register-logo fl-wrap">
+                <img src="images/white-logo.png" alt="">
+            </div>
+            <div class="main-register-bg">
+                <div class="mrb_pin"></div>
+                <div class="mrb_pin mrb_pin2"></div>
+            </div>
+            <div class="mrb_dec"></div>
+            <div class="mrb_dec mrb_dec2"></div>
+        </div>
+        <div class="main-register">
+            <div class="close-reg"><i class="fal fa-times"></i></div>
+            <ul class="tabs-menu fl-wrap no-list-style">
+                <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>
+            </ul>
+            <!--tabs -->                       
+            <div class="tabs-container">
+                <div class="tab">
+                    <!--tab -->
+                    <div id="tab-1" class="tab-content first-tab">
+                        <div class="custom-form">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <label>Username or Email Address  * <span class="dec-icon"><i class="fal fa-user"></i></span></label>
+                                <input name="email" type="text"  placeholder="Your Name or Mail"  value="" required>
+                                <div class="pass-input-wrap fl-wrap">
+                                    <label >Password  * <span class="dec-icon"><i class="fal fa-key"></i></span></label>
+                                    <input name="password" placeholder="Your Password" type="password"  autocomplete="off" value="" required>
+                                    <span class="eye"><i class="fal fa-eye"></i> </span>
+                                </div>
+                                <div class="lost_password">
+                                    <a href="#">Lost Your Password?</a>
+                                </div>
+                                <div class="filter-tags">
+                                    <input id="check-a3" type="checkbox" name="check">
+                                    <label for="check-a3">Remember me</label>
+                                </div>
+                                <div class="clearfix"></div>
+                                <button type="submit"  class="log_btn color-bg"> LogIn </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!--tab end -->
+                    <!--tab -->
+                    <div class="tab">
+                        <div id="tab-2" class="tab-content">
+                            <div class="custom-form">
+                                <form action="signup" method="POST"   name="registerform" class="main-register-form" id="main-register-form2">
+                                    @csrf
+                                    <label >Full Name  * <span class="dec-icon"><i class="fal fa-user"></i></span></label>
+                                    <input type="text" name="name" type="text" placeholder="Your Name" value="" required>
+                                    {{-- <span style="color: red;">@error('name'){{@'Name is required'}}@enderror</span> --}}
+                                    <label >Company Name  * <span class="dec-icon"><i class="fal fa-user"></i></span></label>
+                                    <input name="company" type="text" placeholder="Company Name" value="" required>
+                                    <label>Email Address  * <span class="dec-icon"><i class="fal fa-envelope"></i></span></label>
+                                    <input name="email" type="text"  placeholder="Your Mail" value="" required>
+                                    <div class="pass-input-wrap fl-wrap">
+                                    <label >Password  * <span class="dec-icon"><i class="fal fa-key"></i></span></label>
+                                    <input name="password" type="password" placeholder="Your Password"  autocomplete="off" value="" required>
+                                    <span class="eye"><i class="fal fa-eye"></i> </span>
                                     </div>
+                                    <div class="filter-tags ft-list">
+                                        <input id="check-a2" type="checkbox" name="check" required>
+                                        <label for="check-a2">I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a></label>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <button type="submit" class="log_btn color-bg"> Register </button>
                                 </form>
                             </div>
                         </div>
-
-                        <div class="col-md-3 col-lg-12">
-                            <div class="widget clearfix" style="margin-bottom: -20px;">
-
-                                <div class="row">
-                                    <div class="col-6 col-md-12 col-lg-6 clearfix bottommargin-sm">
-                                        <a href="#" class="social-icon si-dark si-colored si-facebook mb-0" style="margin-right: 10px;">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-                                    </div>
-                                    <!-- <div class="col-6 col-md-12 col-lg-6 clearfix">
-                                        <a href="#" class="social-icon si-dark si-colored si-rss mb-0" style="margin-right: 10px;">
-                                            <i class="icon-rss"></i>
-                                            <i class="icon-rss"></i>
-                                        </a>
-                                        <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-                                    </div> -->
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
-
+                    <!--tab end -->
                 </div>
+                <!--tabs end -->
+                
             </div>
-
-        </div><!-- .footer-widgets-wrap end -->
-
-    </div>
-
-    <!-- Copyrights
-    ============================================= -->
-    <div id="copyrights">
-        <div class="container">
-
-            <div class="row col-mb-30">
-
-                <div class="col-md-6 text-center text-md-start">
-                    Copyrights &copy; 2022 All Rights Reserved by Polls Map.<br>
-                    <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
-                </div>
-
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="d-flex justify-content-center justify-content-md-end">
-                        <a href="#" class="social-icon si-small si-borderless si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-gplus">
-                            <i class="icon-gplus"></i>
-                            <i class="icon-gplus"></i>
-                        </a>
-
-                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
-                            <i class="icon-linkedin"></i>
-                            <i class="icon-linkedin"></i>
-                        </a>
-                    </div>
-
-                    <div class="clear"></div>
-
-                    <i class="icon-envelope2"></i> info@pollsmap.com<span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-12345678 <span class="middot">&middot;</span> <!-- <i class="icon-skype2"></i> CanvasOnSkype -->
-                </div>
-
-            </div>
-
         </div>
-    </div><!-- #copyrights end -->
-</footer><!-- #footer end -->
+    </div>
+</div>
+</div>
+<!--register form end -->
 
-</div><!-- #wrapper end -->
-
-<!-- Go To Top
-============================================= -->
-<div id="gotoTop" class="icon-angle-up"></div>
-
-<!-- JavaScripts
-============================================= -->
-<script src="{{asset('assetfront/js/jquery.js')}}"></script>
-<script src="{{asset('assetfront/js/plugins.min.js')}}"></script>
-
-<!-- Footer Scripts
-============================================= -->
-<script src="{{asset('assetfront/js/functions.js')}}"></script>
-
-</body>
-
-</html>
+<a class="to-top color-bg"><i class="fas fa-caret-up"></i></a>   
+<!--map-modal -->
+<div class="map-modal-wrap">
+<div class="map-modal-wrap-overlay"></div>
+<div class="map-modal-item">
+    <div class="map-modal-container fl-wrap">
+        <h3> <span>Listing Title </span></h3>
+        <div class="map-modal-close"><i class="far fa-times"></i></div>
+        <div class="map-modal fl-wrap">
+            <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
+            <div class="scrollContorl"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!--map-modal end --> 			
+</div>
+<!-- Main end -->

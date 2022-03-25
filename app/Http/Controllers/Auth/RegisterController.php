@@ -72,4 +72,11 @@ class RegisterController extends Controller
             'role_id' => $data['role_id'],
         ]);
     }
+
+    // public function userRegister(Request $request)
+    // {
+    //     $name = $request->name;
+        
+    //     return $name;
+    // }
 }

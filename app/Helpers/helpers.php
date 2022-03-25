@@ -28,3 +28,31 @@ function delete_img_db($id)
         }
     
 }
+
+function country_arr(){
+
+    $country_data = array("India"=>"India", "Sri Lanka"=>"Sri Lanka", "UK"=>"UK", "US"=>"US");
+
+    return $country_data;
+}
+
+function port_arr(){
+
+    $port_data = array("Port-1"=>"Port-1", "Port-2"=>"Port-2", "Port-3"=>"Port-3", "Port-4"=>"Port-4");
+
+    return $port_data;
+}
+
+function container_arr(){
+
+    $container_data = array("80ft"=>"80ft", "100ft"=>"100ft", "200ft"=>"200ft", "400ft"=>"400ft");
+
+    return $container_data;
+}
+
+function unit_arr(){
+
+    $unit_data = array("KG"=>"KG", "MT"=>"MT", "LITRE"=>"LITRE");
+
+    return $unit_data;
+}

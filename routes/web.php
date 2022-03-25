@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('index');
+     return view('index');
 
-    return "Home";
+    //return "Home";
 });
 
 // Route::get('/', 'IndexController@index');
+
 
 
 Auth::routes();
@@ -50,7 +51,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::get('/products', 'ProductController@index');
     Route::post('/add-product', 'ProductController@addProduct');
-    Route::get('/edit-product/{id}', 'ProductController@edit');
+    Route::get('/edit-product/{prod_id}', 'ProductController@edit');
     Route::post('/update-product/{id}', 'ProductController@update');
     Route::post('/update-product-status/', 'ProductController@updateStatus');
     Route::get('/product-delete/{id}', 'ProductController@delete');
@@ -58,33 +59,99 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
     // Product Dashboard
 
-    Route::get('/product/dashboard/{id}', 'ProductDashboardController@index');
+    Route::get('/product/dashboard/{prod_id}', 'ProductDashboardController@index');
+
+    Route::get('/freight/{prod_id}', 'FreightController@index');
+    Route::post('/add-freight/{id}', 'FreightController@addFreight');
+    Route::post('/update-freight-price/{id}', 'FreightController@updatePrice');
+    Route::get('/edit-freight/{prod_id}/{id}', 'FreightController@editFreight');
+    Route::post('/update-freight/{id}', 'FreightController@update');
+    Route::get('/delete-freight/{id}', 'FreightController@delete');
+
+    Route::get('/packaging/{prod_id}', 'PackagingController@index');
+    Route::post('/add-packaging/{prod_id}', 'PackagingController@addPackaging');
+    Route::get('/edit-packaging/{prod_id}/{id}', 'PackagingController@editPackaging');
+    Route::post('/update-packaging/{id}', 'PackagingController@update');
+    Route::get('/delete-packaging/{id}', 'PackagingController@delete');
+
+    Route::get('/certificate/{prod_id}', 'CertificateController@index');
+    Route::post('/add-certificate/{prod_id}', 'CertificateController@addCertificate');
+    Route::get('/edit-certificate/{prod_id}/{id}', 'CertificateController@editCertificate');
+    Route::post('/update-certificate/{id}', 'CertificateController@update');
+    Route::get('/delete-certificate/{id}', 'CertificateController@delete');
+
+    // update certification description
+    Route::post('/update-certificate-description/{prod_id}', 'ProductDetailsController@updateCertificationDescription');
+
+    // Edit Product Description
+    Route::get('/product-description/{prod_id}', 'ProductDetailsController@productDescription');
+
+    // update product description
+    Route::post('/update-product-description/{prod_id}', 'ProductDetailsController@updateProductDescription');
 
 
-    // Route::get('/add-news', 'PostController@addPost');
+    // Edit Farming Production
+    Route::get('/farming-production/{prod_id}', 'ProductDetailsController@farmingProduction');
 
-    // Route::post('/save-news', 'PostController@saveNews');
-    // Route::get('/view-news', 'PostController@postList');
+    // update farming production
+    Route::post('/update-farming-production/{prod_id}', 'ProductDetailsController@updateFarmingProduction');
 
-    // Route::get('/edit-news/{id}', 'PostController@editPost');
-    // Route::post('/update-news/{id}', 'PostController@updatePost');
-    // Route::get('/news-delete/{id}', 'PostController@deletePost');
-    //Route::get('/news/{id}', 'PostController@postByCategory');
+    // Gallery
 
-    // Route::get('/add-video', 'VideoController@addVideo');
-    // Route::post('/save-video', 'VideoController@saveVideo');
-    // Route::get('/video-list', 'VideoController@videoList');
-    // Route::get('/edit-video/{id}', 'VideoController@editVideo');
-    // Route::post('/update-video/{id}', 'VideoController@updateVideo');
-    // Route::get('/video-delete/{id}', 'VideoController@deleteVideo');
-    // Route::post('/search-news', 'PostController@searchNews');
+    Route::get('/gallery/{prod_id}', 'GalleryController@index');
+    Route::post('upload-images/{prod_id}', 'GalleryController@upload');
+    Route::get('/delete-image/{id}', 'GalleryController@delete');
 
+    // Variants
+
+    Route::get('/variants/{prod_id}', 'VariantController@index');
+    Route::post('/add-variant/{prod_id}', 'VariantController@addVariant');
+    Route::get('/edit-variant/{prod_id}/{id}', 'VariantController@editVariant');
+    Route::post('/update-variant/{id}', 'VariantController@update');
+    Route::get('/delete-variant/{id}', 'VariantController@delete');
+
+
+    //Type
+
+    Route::get('/type/{prod_id}', 'TypeController@index');
+    Route::post('/add-type/{prod_id}', 'TypeController@addType');
+    Route::get('/edit-type/{prod_id}/{id}', 'TypeController@edit');
+    Route::post('/update-type/{id}', 'TypeController@update');
+    Route::get('/delete-type/{id}', 'TypeController@delete');
+
+
+    //Qality
+
+    Route::get('/quality/{prod_id}', 'QualityController@index');
+    Route::post('/add-quality/{prod_id}', 'QualityController@addQuality');
+    Route::get('/edit-quality/{prod_id}/{id}', 'QualityController@edit');
+    Route::post('/update-quality/{id}', 'QualityController@update');
+    Route::get('/delete-quality/{id}', 'QualityController@delete');
+
+
+    // Cutomers
+    Route::get('/customers', 'User\CustomerController@index');
+    Route::get('/customer-deatils/{id}', 'User\CustomerController@customerById');
+    Route::get('/customer-edit/{id}', 'User\CustomerController@edit');
+    Route::post('/customer-update/{id}', 'User\CustomerController@update');
+
+    // country and ports
+
+    Route::post('/get_port','CountryPortController@getPort')->name('ajaxdata.get_port');
+
+    
 
 });
 
-// Route::get('/news/{id}', 'PostController@subHome');
-// Route::get('/details/{category}/{cate_name}', 'PostController@postDetails');
-// Route::get('/detail-news/{id}/{title}', 'PostController@postDetails');
-// Route::get('/video', 'VideoController@listVideo');
+Route::group(['middleware' => ['user']], function () {
 
-// Route::get('/ourteam', 'PostController@teamPage');
+    //Route::get('/products-list', 'ProductController@listProducts');
+    //Route::get('/product-details/{prod_id}', 'ProductController@productById');
+
+});
+
+Route::get('/products-list', 'ProductController@listProducts');
+Route::get('/product-details/{prod_id}', 'ProductController@productById');
+Route::post('signup', 'User\SignupController@userRegister');
+Route::get('/getotp', 'User\SignupController@getOtp');
+Route::post('/verifyotp', 'User\SignupController@verifyOtp');

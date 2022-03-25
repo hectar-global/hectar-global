@@ -20,13 +20,13 @@
            
         @show
     </head>
-    <body class="hold-transition sidebar-mini layout-fixed">
+    <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
         <div class="wrapper ">
             
                     @include('layout/admin/topnav')
 
                
-                    @include('layout/admin/sidebar')
+                    {{-- @include('layout/admin/sidebar') --}}
 
                         @yield('content')
 
