@@ -197,3 +197,31 @@
 <!--map-modal end --> 			
 </div>
 <!-- Main end -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $( "#country" ).change(function() {
+
+        //alert("dadads");
+        var id = this.value;
+        
+        //var token = $('input[name="_token"]').val();
+
+        $.ajax({
+          url:"{{ route('ajaxdata.get_port') }}",
+          method:'post',
+          dataType: 'json',
+          data:{id:id, _token: '{{csrf_token()}}'},
+          success:function(result)
+          {
+            //console.log(result);
+            $("#port").html(result);
+          }
+        });
+        
+
+       // alert(country_id);
+    });
+  
+  
+  </script>
