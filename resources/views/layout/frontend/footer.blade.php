@@ -198,17 +198,23 @@
 </div>
 <!-- Main end -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
+$(document).ready( function() {
+    alert('Example of a basic alert box in jquery', 'jquery basic alert box');
+});
+</script> --}}
 
+<script type="text/javascript">
+$(document).ready( function() {
     $( "#country" ).change(function() {
 
-        //alert("dadads");
+       // alert("dadads");
         var id = this.value;
         
         //var token = $('input[name="_token"]').val();
 
         $.ajax({
-          url:"{{ route('ajaxdata.get_port') }}",
+          url:"{{ route('ajaxdata.get_ports') }}",
           method:'post',
           dataType: 'json',
           data:{id:id, _token: '{{csrf_token()}}'},
@@ -223,5 +229,5 @@
        // alert(country_id);
     });
   
-  
+});
   </script>
