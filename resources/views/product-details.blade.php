@@ -51,12 +51,12 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="port">Select Port </label>   
-                                        <select name="port" id="port" data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
-                                            <option value="">Select</option>
-                                            @foreach($ports as $port)
+                                        <select name="port" id="port" class="" style="margin-bottom:8px;" >
+                                            
+                                            {{-- @foreach($ports as $port)
                                                     <option value="{{$port->id}}">{{$port->name}}</option>
                                                 
-                                                @endforeach  
+                                                @endforeach   --}}
                                         </select>  
                                     </div>
                                 </div>
