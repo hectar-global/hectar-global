@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Type;
+use App\Price;
 use App\Freight;
 use App\Gallery;
 use App\Quality;
@@ -59,5 +60,10 @@ class Product extends Model
     public function quality()
     {
         return $this->hasMany(Quality::class);
+    }
+
+    public function price()
+    {
+        return $this->hasOne(Price::class);
     }
 }
