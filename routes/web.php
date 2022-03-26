@@ -128,6 +128,11 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/update-quality/{id}', 'QualityController@update');
     Route::get('/delete-quality/{id}', 'QualityController@delete');
 
+    // Price
+    Route::get('/price/{prod_id}', 'PriceController@index');
+    Route::post('/update-price/{prod_id}/{vid}', 'PriceController@update');
+
+
 
     // Cutomers
     Route::get('/customers', 'User\CustomerController@index');
