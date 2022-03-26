@@ -160,3 +160,4 @@ Route::get('/product-details/{prod_id}', 'ProductController@productById');
 Route::post('signup', 'User\SignupController@userRegister');
 Route::get('/getotp', 'User\SignupController@getOtp');
 Route::post('/verifyotp', 'User\SignupController@verifyOtp');
+Route::post('/get_ports','CountryPortController@getPort')->name('ajaxdata.get_ports');
