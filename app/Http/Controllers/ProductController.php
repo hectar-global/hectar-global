@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Port;
+use App\Country;
 use App\Product;
 use App\Category;
 use Carbon\Carbon;
@@ -210,7 +212,11 @@ class ProductController extends Controller
         
         $product = Product::with('category', 'packaging', 'certificate', 'gallery', 'details', 'freight', 'variant', 'type', 'quality')->where('id', $prod_id)->first();
 
-       // return $product->variant;die();
+        //return $product->freight;die();
+
+       $countries = Country::all();
+
+       $ports = Port::all();
 
 
        // Quality
@@ -287,6 +293,6 @@ class ProductController extends Controller
 
 
 
-        return view('product-details')->with(compact('product', 'delivryDateTime', 'variant_image_count', 'all_types', 'variant_images', 'all_qalities', 'quality_count', 'type_count'));
+        return view('product-details')->with(compact('product', 'delivryDateTime', 'variant_image_count', 'all_types', 'variant_images', 'all_qalities', 'quality_count', 'type_count', 'countries', 'ports'));
     }
 }
