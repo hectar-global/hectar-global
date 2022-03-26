@@ -462,9 +462,10 @@
                                         <div class="fl-wrap">
                                             <label for="amt">Select Variant </label>   
                                             <select data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
-                                                <option>Sannam 334</option>
-                                                <option>Teja S17</option>
-                                                <option>Byadagi</option>
+                                            @foreach($product->variant as $variant)
+                                                <option value="{{$variant->id}}">{{$variant->name}}</option>
+                                            
+                                            @endforeach  
                                                 
                                             </select>  
                                             
@@ -472,21 +473,39 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label>Select Type  </label>
-                                                <select data-placeholder="" class="chosen-select on-radius no-search-select" >
-                                                    <option>Stemless</option>
-                                                    <option>with Stem</option>
-                                                    
-                                                </select> 
+                                            <select data-placeholder="" class="chosen-select on-radius no-search-select" >
+                                                @foreach($product->type as $type)
+                                                    <option value="{{$type->id}}">{{$type->title}}</option>
+                                                @endforeach
+                                            </select> 
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Select Quality  </label>
                                                 <select data-placeholder="" class="chosen-select on-radius no-search-select" >
-                                                    <option>Medium</option>
-                                                    <option>Medium-Best</option>
-                                                    <option>Best</option>
-                                                    <option>Deluxe</option>
+                                                @foreach($product->quality as $quality)
+                                                    <option value="{{$quality->id}}">{{$quality->title}}</option>
+                                                @endforeach 
                                                     
                                                 </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Select Packaging preference: </label>
+                                                <div class=" add-list-tags fl-wrap">
+                                                    <!-- Checkboxes -->
+                                                    <ul class="fl-wrap filter-tags no-list-style ds-tg">
+                                                        @foreach($product->packaging as $packaging)
+                                                        <li>
+                                                            <input id="check-aaa5" type="checkbox" name="" checked="">
+                                                            <label for="check-aaa5" style="margin: -15px 0px; padding-left:10px; padding-right:10px;"> {{$packaging->name}}</label>
+                                                        </li>
+                                                    @endforeach
+                                                        
+                                                    </ul>
+                                                    <!-- Checkboxes end -->												
+                                                </div>
                                             </div>
                                         </div>
                                         
