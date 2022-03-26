@@ -4,6 +4,7 @@ namespace App;
 
 use App\Type;
 use App\Price;
+use App\Country;
 use App\Freight;
 use App\Gallery;
 use App\Quality;
@@ -66,4 +67,9 @@ class Product extends Model
     {
         return $this->hasOne(Price::class);
     }
+
+    // public function country()
+    // {
+    //     return $this->hasMany(Country::class);
+    // }
 }
