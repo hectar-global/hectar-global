@@ -131,6 +131,15 @@
               </li>
 
               <li class="nav-item has-treeview">
+                <a href="{{ url('/price/'). '/'.request()->route()->prod_id }}" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Price
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item has-treeview">
                 <a href="{{ url('/type/'). '/'.request()->route()->prod_id }}" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
