@@ -72,5 +72,10 @@ class CustomerController extends Controller
         }
     }
 
+    public function customerLogin()
+    {
+        return view('customer-login');
+    }
+
 
 }
