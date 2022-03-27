@@ -38,7 +38,7 @@
      <i class="fal fa-user"></i> Signout</a>
                 </div>
                 @else
-                <div class="add-list_wrap show-reg-form modal-open">
+                <div class="add-list_wrap show-reg-form modal-open" id="cust-modal-open">
                     <a href="#" class="add-list color-bg"><i class="fal fa-user"></i> <span>Sign In / Register</span></a>
                 </div>
                 @endif
@@ -201,3 +201,4 @@
                 <!--header-opt-modal end -->  
             </header>
             <!-- header end  -->
+            
