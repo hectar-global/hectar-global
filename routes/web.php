@@ -153,6 +153,11 @@ Route::group(['middleware' => ['user']], function () {
     //Route::get('/products-list', 'ProductController@listProducts');
     //Route::get('/product-details/{prod_id}', 'ProductController@productById');
 
+    Route::post('/generate-quote/{prod_id}', 'QuoteController@generateQuote');
+    Route::post('/calculate-quote/{prod_id}', 'QuoteController@calculateQuote');
+
+
+
 });
 
 Route::get('/products-list', 'ProductController@listProducts');
@@ -161,3 +166,4 @@ Route::post('signup', 'User\SignupController@userRegister');
 Route::get('/getotp', 'User\SignupController@getOtp');
 Route::post('/verifyotp', 'User\SignupController@verifyOtp');
 Route::post('/get_ports','CountryPortController@getPort')->name('ajaxdata.get_ports');
+Route::get('/customer-login', 'User\CustomerController@customerLogin');
