@@ -97,7 +97,7 @@ class QuoteController extends Controller
         $order->price = $cif_cost;
         $order->save();
        
-        return view('generate-quote')->with(compact('variant', 'type', 'quality', 'packaging', 'country', 'port', 'loada', 'quantity'));
+        return view('generate-quote')->with(compact('variant', 'type', 'quality', 'packaging', 'country', 'port', 'loada', 'quantity', 'cif_cost'));
     }
 
     public function calculateQuote($prod_id, Request $request)
