@@ -1,7 +1,7 @@
 @extends('layout.frontend.main')
 
 
-@section('title', 'LensOnNews')
+@section('title', 'Hector')
 @section('content')
 
               <!-- wrapper  -->	
