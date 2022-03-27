@@ -31,59 +31,7 @@
                     <div class="col-md-8">
                         <div class=" fl-wrap">
                             <!--  list-single-header-item-->
-                            <div class="list-single-header-item  fl-wrap "">
-                            <form method="post"  name="mortgage-form">
-                                <div class="row">
-                                    <div class="col-md-8" style="padding-bottom: 15px;">
-                                        Step - 2/2 | Enter details to generate your quote
-                                    </div>
-                                </div>
-                                <div class="row" style="padding-bottom: 10px;">
-                                    <div class="col-md-4">
-                                            <label for="country">Select Country </label>   
-                                            <select name="country" id="country" data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
-                                                <option value="">Select</option>
-                                                @foreach($countries as $country)
-                                                    <option value="{{$country->id}}">{{$country->name}}</option>
-                                                
-                                                @endforeach  
-                                            </select>  
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="port">Select Port </label>   
-                                        <select name="port" id="port" class="" style="margin-bottom:8px;" >
-                                            
-                                            {{-- @foreach($ports as $port)
-                                                    <option value="{{$port->id}}">{{$port->name}}</option>
-                                                
-                                                @endforeach   --}}
-                                        </select>  
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                            <label for="loada">Select Loadability</label>   
-                                            <select name="loada" data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
-                                                @foreach($product->freight as $freight)
-                                                    <option value="{{$freight->id}}">{{$freight->container}}</option>
-                                                
-                                                @endforeach  
-                                            </select>  
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="port">Quantity</label>   
-                                        <select name="quantity" data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
-                                            @foreach($product->freight as $freight)
-                                                <option value="{{$freight->id}}">{{$freight->volume}}</option>
-                                            @endforeach  
-                                        </select>  
-                                    </div>
-                                </div>
-
-
-                            </form>
-                            </div>
+                            
                             <div class="list-single-header-item  fl-wrap  " id="sec1">
                                 <div class="row">
                                     <div class="col-md-8">
@@ -510,10 +458,11 @@
                                         <h4>Calculate CIF Quote</h4>
                                         <p>only takes 30 secs.</p>
                                     </div>
-                                    <form method="post"  name="mortgage-form">
+                                    <form method="post"  action="{{url('/calculate-quote/'.request()->route()->prod_id)}}" name="mortgage-form">
+                                        @csrf
                                         <div class="fl-wrap">
                                             <label for="amt">Select Variant </label>   
-                                            <select data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
+                                            <select name="variant" data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
                                             @foreach($product->variant as $variant)
                                                 <option value="{{$variant->id}}">{{$variant->name}}</option>
                                             
@@ -525,7 +474,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label>Select Type  </label>
-                                            <select data-placeholder="" class="chosen-select on-radius no-search-select" >
+                                            <select name ="type" data-placeholder="" class="chosen-select on-radius no-search-select" >
                                                 @foreach($product->type as $type)
                                                     <option value="{{$type->id}}">{{$type->title}}</option>
                                                 @endforeach
@@ -533,7 +482,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Select Quality  </label>
-                                                <select data-placeholder="" class="chosen-select on-radius no-search-select" >
+                                                <select name="quality" data-placeholder="" class="chosen-select on-radius no-search-select" >
                                                 @foreach($product->quality as $quality)
                                                     <option value="{{$quality->id}}">{{$quality->title}}</option>
                                                 @endforeach 
@@ -550,7 +499,7 @@
                                                     <ul class="fl-wrap filter-tags no-list-style ds-tg">
                                                         @foreach($product->packaging as $packaging)
                                                         <li>
-                                                            <input id="check-aaa5" type="checkbox" name="" checked="">
+                                                            <input id="check-aaa5" type="checkbox" name="packaging" checked="" value="{{$packaging->id}}">
                                                             <label for="check-aaa5" style="margin: -15px 0px; padding-left:10px; padding-right:10px;"> {{$packaging->name}}</label>
                                                         </li>
                                                     @endforeach
@@ -564,7 +513,7 @@
                                         <div class="clearfix"></div>
                                         
                                         <div class="reset-form reset-btn"> <i class="far fa-sync-alt"></i> Reset Form</div>
-                                        <button type="button" id="sbt" class="color2-bg">Calculate CIF Quote</button>
+                                        <button type="submit" id="sbt" class="color2-bg">Calculate CIF Quote</button>
                                         <div class="monterage-title fl-wrap">
                                             <h5>Price Mandi:</h5>
                                             <input type="text" id="pmt" name="mPmt" value="0"> 
