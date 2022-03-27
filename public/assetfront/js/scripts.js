@@ -534,6 +534,12 @@ initIsotope();
         $(".modal_main").addClass("vis_mr");
         $("html, body").addClass("hid-body");
     });
+    $('#cust-modal-open').on("click", function (e) {
+        e.preventDefault();
+        $('.modal , .reg-overlay').fadeIn(200);
+        $(".modal_main").addClass("vis_mr");
+        $("html, body").addClass("hid-body");
+    });
     $('.close-reg , .reg-overlay').on("click", function () {
         modal.hide();
     });
