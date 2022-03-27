@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Port;
 use App\Type;
+use App\Order;
+use App\Price;
 use App\Country;
+use App\Freight;
 use App\Product;
+use App\Quality;
 use App\Variant;
 use App\Category;
-use App\Freight;
 use App\Packaging;
 use Carbon\Carbon;
 use App\ProductsDetails;
-use App\Quality;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -56,9 +59,43 @@ class QuoteController extends Controller
         $freight_id= $request->loada;
         $container_name = Freight::find($freight_id);
         $loada= $container_name->container;
+
+        $getPrice = Price::where('quality_id', $quality_id)->where('variant_id', $variant_id )->first();
+        $mandi_price = $getPrice->price;
+        $final_price = $mandi_price/75;
+
+        $freight = Freight::where('country', $country_id)->where('port', $port_id)->where('container', $loada)->first();
+        $freight_price= $freight->cost;
+        $freight_cost = $freight_price * $quantity;
+
+        
+        $volume = $freight->volume; 
+        $total_volume = $volume * $quantity;
+
+        $packaging_volume = $packaging_name->volume;
+
+        $total_packages = ($total_volume * 1000)/$packaging_volume;
+
+        $packaging_cost = $packaging_name->cost * $total_packages;
+
+        $cif_cost = ($mandi_price * $total_volume) + $packaging_cost + ($freight_cost);
         
 
-       // echo $variant; die();
+        //echo $cif_cost; die();
+
+        $order = new Order;
+        $order->product = $prod_id;
+        $order->user_id = Auth::user()->id;
+        $order->variant = $variant;
+        $order->type = $type;
+        $order->quality = $quality;
+        $order->country = $country;
+        $order->port = $port;
+        $order->packaging = $packaging;
+        $order->loadability = $loada;
+        $order->quantity = $quantity;
+        $order->price = $cif_cost;
+        $order->save();
        
         return view('generate-quote')->with(compact('variant', 'type', 'quality', 'packaging', 'country', 'port', 'loada', 'quantity'));
     }
