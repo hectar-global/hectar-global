@@ -22,7 +22,9 @@ class UserMiddleware
         }
         else
         {
-            return redirect('/')->with('status', 'You are not allowed to admin dashboard area');
+            // return redirect('/')->with('status', 'You are not allowed to admin dashboard area');
+            //return redirect('/customer-login')->with('status', 'You are not allowed to admin dashboard area');
+            return redirect()->back();
         }
     }
 }
