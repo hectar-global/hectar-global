@@ -337,7 +337,7 @@
     $(document).ready(function() {
         $("#cifb").trigger('click');
     });
-    </script>
+</script>
 @stop
 
 
