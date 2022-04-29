@@ -206,18 +206,24 @@ class QuoteController extends Controller
     {
         return $request;
 
-        $freight_id = $request->loadability;
+        // $freight_id = $request->loadability;
 
-        $freight = Freight::find($freight_id);
-        $country_id= $freight->country;
+        // $freight = Freight::find($freight_id);
+        // $country_id= $freight->country;
 
-        $prod_id = $request->prod_name;
+        // $prod_id = $request->prod_name;
        // echo $freight_id; die();
     }
 
     public function completeQuote(Request $request)
     {
        // return $request;
+
+    //    if ($request->isMethod('get')) 
+    //         {
+    //             return $request;
+
+    //         }
             
 
         $freight_id = $request->loadability;
@@ -290,7 +296,9 @@ class QuoteController extends Controller
 
     public function completeQuoteTwo(Request $request)
     {
-        // return $request; die();       
+         //return $request; die(); 
+        
+       // return "Testing";
 
         $variant_id= $request->variant;
 
@@ -301,13 +309,7 @@ class QuoteController extends Controller
         $product_id = $request->prod_id;
         //$type_id = $request->type_id;
 
-       // echo $port_id;die();
-
-       // return $container; die(); 
-
-        //localStorage.setItem("prod_info", JSON.stringify(prod_info));
-
-        /// calculate price for medium
+      
 
         $medium_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 3);
 
@@ -315,9 +317,8 @@ class QuoteController extends Controller
 
         $best_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 5);
 
-        // echo $medium_CIF_cost."<br>";
-        // echo $deluxe_CIF_cost."<br>";
-        // echo $best_CIF_cost;
+       // return $medium_CIF_cost; die();
+
 
         $variants = Variant::where('product_id', $request->prod_id)->get();
         $packagings = Packaging::where('product_id', $request->prod_id)->get();
@@ -351,28 +352,30 @@ class QuoteController extends Controller
         
         ];
 
-        // $prod_info =[
-        //     'variant_id' => $variant_id,
-        //     'country_id' => $country_id,
-        //     'lodability' => $container, 
-        //     'packaging_id' => $packaging_id,
-        //     'product_id' => $product_id,
-        // ];
 
-        //return $pages_array['0'];die();
-
-        return view('completequote-two')->with(compact('best_mandi_price', 
-        'delux_mandi_price', 'medium_mandi_price', 'best_CIF_cost', 
-        'deluxe_CIF_cost', 'medium_CIF_cost', 'variants', 
-        'packagings', 'get_freight', 'variant_id', 'country_id', 'container', 'packaging_id', 'product_id', 'port_id'));
-
-
-        // return [
-        //     'best_mandi_price', 
+        // return view('completequote-two')->with(compact('best_mandi_price', 
         // 'delux_mandi_price', 'medium_mandi_price', 'best_CIF_cost', 
         // 'deluxe_CIF_cost', 'medium_CIF_cost', 'variants', 
-        // 'packagings', 'get_freight', 'variant_id', 'country_id', 'container', 'packaging_id', 'product_id', 'port_id'
-        // ];
+        // 'packagings', 'get_freight', 'variant_id', 'country_id', 'container', 'packaging_id', 'product_id', 'port_id'));
+
+        
+        return [
+            "best_mandi_price"=> $best_mandi_price, 
+            "delux_mandi_price"=> $delux_mandi_price, 
+            "medium_mandi_price"=> $medium_mandi_price, 
+            "best_CIF_cost"=> $best_CIF_cost, 
+            "deluxe_CIF_cost"=> $deluxe_CIF_cost, 
+            "medium_CIF_cost"=> $medium_CIF_cost, 
+            "variants"=> $variants, 
+            "packagings"=> $packagings, 
+            "get_freight"=> $get_freight, 
+            "variant_id"=> $variant_id, 
+            "country_id"=> $country_id, 
+            "container"=> $container, 
+            "packaging_id"=> $packaging_id, 
+            "product_id"=> $product_id, 
+            "port_id"=> $port_id
+        ];
     }
 
     public function orderPlace(Request $request)
