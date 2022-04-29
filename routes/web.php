@@ -28,7 +28,6 @@ use Illuminate\Support\Facades\Route;
 //  Route::post('/place-order', 'QuoteController@placeOrder');
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -204,8 +203,8 @@ Route::get('/customer-login', 'User\CustomerController@customerLogin');
 Route::get('/about', 'PagesController@aboutUs');
 Route::get('/userlogin', 'User\CustomerController@userLogin');
 
-// Route::get('/userlogin', function () {
+Route::get('/admin', function () {
 
-//         return view('user-login');
+        return view('admin.login');
         
-// });
+});
