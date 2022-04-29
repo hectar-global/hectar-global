@@ -18,7 +18,12 @@ $product = DB::table('products')->where('id', request()->route()->prod_id)->firs
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper" style="min-height: 600px;
+    padding: 40px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    margin-left: 0px;
+    width: 80%;">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">

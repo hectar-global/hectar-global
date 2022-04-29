@@ -15,7 +15,12 @@
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper" style="min-height: 600px;
+    padding: 40px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    margin-left: 0px;
+    width: 80%;">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -58,7 +63,7 @@
             <div class="col-lg-12 col-12">
                 <div class="form-group purple-border">
                     <label for="exampleFormControlTextarea4">Enter Details</label>
-                    <textarea class="form-control" id="farming_details" name="farming_details" rows="3">{{$products_details !="" ? $products_details->farming_details:""}}</textarea>
+                    <textarea class="textarea form-control" id="farming_details" name="farming_details" rows="3">{{$products_details !="" ? $products_details->farming_details:""}}</textarea>
                     {{-- <textarea class="form-control" id="certificate_description" name="certificate_description" rows="3"></textarea> --}}
                 </div>
             </div>

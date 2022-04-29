@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -75,6 +76,19 @@ class CustomerController extends Controller
     public function customerLogin()
     {
         return view('customer-login');
+    }
+
+    public function userLogin()
+    {
+        //return view('user-login');
+        $products = Product::with('freight', 'countries')->get();
+        //return $products;die();
+ 
+        foreach($products as $product){
+            $countries= $product->countries;
+        }
+ 
+        return view('user-login')->with(compact('products', 'countries'));
     }
 
 

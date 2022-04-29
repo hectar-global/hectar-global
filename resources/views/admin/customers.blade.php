@@ -13,13 +13,14 @@ use Carbon\Carbon;
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper"style="width: 90%;
+    overflow: scroll;margin-left:80px">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Customers</h1>
+          <h1 class="m-0 text-dark" style="font-size:20px"><i class="fas fa-users" aria-hidden="true" style="margin-right:10px"></i>Hectar Customers Directory</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           {{-- <ol class="breadcrumb float-sm-right">

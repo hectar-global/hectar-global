@@ -1,4 +1,4 @@
-<footer class="main-footer">
+<footer style="padding: 5px 60px;">
     <strong>Copyright &copy; 2022 <a href="">Hectar</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">

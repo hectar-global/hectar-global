@@ -7,12 +7,13 @@
                 <div class="col-md-3">
                     <div class="footer-widget fl-wrap">
                         <div class="footer-widget-logo fl-wrap">
-                            <img src="images/logo.png" alt="">
+                            <img src="assetfront/images/logo.png" alt="">
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
+                        <p>Hectar offers the quickest solution available to discover everyday prices and shortest transit for Agri Commodities purchases.</p>
                         <div class="fw_hours fl-wrap">
-                            <span>Monday - Friday:<strong> 8am - 6pm</strong></span>
-                            <span>Saturday - Sunday:<strong> 9am - 3pm</strong></span>
+                            <span>Get quote in <strong> 30 secs</strong></span>
+                            <span><strong> 100%</strong> Genuine products</span>
+                            <span>Track shipment in<strong> Realtime</strong></span>
                         </div>
                     </div>
                 </div>
@@ -24,11 +25,9 @@
                             <h4>Helpful links</h4>
                         </div>
                         <ul class="footer-list fl-wrap">
-                            <li><a href="about.html">About Our Company</a></li>
-                            <li><a href="blog.html">Our last News</a></li>
-                            <li><a href="pricing.html">Pricing Plans</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="help.html">Help Center</a></li>
+                            <li><a href="/about">About Hectar</a></li>
+                            <li><a href="/contacts" id="demo01">Contacts</a></li>
+                            <li><a href="/help">Help Center</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,16 +39,16 @@
                             <h4>Contacts Info</h4>
                         </div>
                         <ul  class="footer-contacts fl-wrap">
-                            <li><span><i class="fal fa-envelope"></i> Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
-                            <li> <span><i class="fal fa-map-marker"></i> Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
-                            <li><span><i class="fal fa-phone"></i> Phone :</span><a href="#">+7(111)123456789</a></li>
+                            <li><span><i class="fal fa-envelope"></i> Mail :</span><a href="#" target="_blank">contact@hectar.global</a></li>
+                            <li> <span><i class="fal fa-map-marker"></i> Address :</span><a href="#" target="_blank">Chennai, India</a></li>
+                            <li><span><i class="fal fa-phone"></i> Phone :</span><a href="#">+91(783)807838</a></li>
                         </ul>
                         <div class="footer-social fl-wrap">
                             <ul>
                                 <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,13 +58,10 @@
                 <div class="col-md-3">
                     <div class="footer-widget fl-wrap">
                         <div class="footer-widget-title fl-wrap">
-                            <h4>Download our apps</h4>
+                            <h4>Hectar.global</h4>
                         </div>
-                        <p>Start working with Hectar that can provide everything you need </p>
-                        <div class="api-links fl-wrap">
-                            <a href="#" class="api-btn color-bg"><i class="fab fa-apple"></i> App Store</a>  
-                            <a href="#" class="api-btn color-bg"><i class="fab fa-google-play"></i> Play Market</a>
-                        </div>
+                        <p>We ensure absolute certainty on the quality of your purchase by defining objective rules for Quality and grading of all our products.</p>
+                        
                     </div>
                 </div>
                 <!-- footer widget end-->                                     
@@ -179,33 +175,65 @@
 </div>
 <!--register form end -->
 
+
+
 <a class="to-top color-bg"><i class="fas fa-caret-up"></i></a>   
-<!--map-modal -->
-<div class="map-modal-wrap">
-<div class="map-modal-wrap-overlay"></div>
-<div class="map-modal-item">
-    <div class="map-modal-container fl-wrap">
-        <h3> <span>Listing Title </span></h3>
-        <div class="map-modal-close"><i class="far fa-times"></i></div>
-        <div class="map-modal fl-wrap">
-            <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
-            <div class="scrollContorl"></div>
-        </div>
-    </div>
-</div>
-</div>
-<!--map-modal end --> 			
+	
 </div>
 <!-- Main end -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-{{-- <script type="text/javascript">
-$(document).ready( function() {
-    alert('Example of a basic alert box in jquery', 'jquery basic alert box');
-});
-</script> --}}
+<script src="/assetfront/home-images/mbac-1.0.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" type="text/css">
 
+<script src="{{asset('assetfront/js/animatedModal.min.js')}}"></script>
+  
+<script>
+$(document).ready(function(){
+    $("#demo01").animatedModal();
+    $('.mbac-wrap').mbac({
+        width: 690,
+        height: 460
+    });
+});
+</script>
+
+ <!--DEMO01-->
+
+<link rel="stylesheet" href="/assetfront/home-images/mbac.css">
 <script type="text/javascript">
 $(document).ready( function() {
+
+
+    $("#default_option").click(function(){
+  $(this).parent().toggleClass("active");
+})
+
+$("#select_ul li").click(function(){
+  var currentele = $(this).html();
+  $("#default_option li").html(currentele);
+  $(this).parents(".select_wrap").removeClass("active");
+});
+
+$("#default_option1").click(function(){
+  $(this).parent().toggleClass("active");
+})
+
+$("#select_ul1 li").click(function(){
+  var currentele = $(this).html();
+  $("#default_option1 li").html(currentele);
+  $(this).parents(".select_wrap").removeClass("active");
+});
+
+$("#default_option2").click(function(){
+  $(this).parent().toggleClass("active");
+})
+
+$("#select_ul2 li").click(function(){
+  var currentele = $(this).html();
+  $("#default_option2 li").html(currentele);
+  $(this).parents(".select_wrap").removeClass("active");
+});
+
     $( "#country" ).change(function() {
 
        // alert("dadads");
@@ -224,10 +252,16 @@ $(document).ready( function() {
             $("#port").html(result);
           }
         });
-        
+       
 
        // alert(country_id);
     });
-  
+    $(".select-product").select2({
+    placeholder: "Select Product",
+    allowClear: true,
+    
+});
+
 });
   </script>
+

@@ -18,22 +18,24 @@
             <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
             <link rel="stylesheet" href="{{asset('assetsadmin/plugins/select2/css/select2.min.css')}}">
             <link rel="stylesheet" href="{{asset('assetsadmin/customstyle.css')}}">
+            <link rel="stylesheet" href="{{asset('assetsadmin/css/style-new.css')}}">
            
         @show
 
     </head>
-    <body class="hold-transition sidebar-mini layout-fixed">
-        <div class="wrapper ">
+    <body class=""><div class="app-container">
             
-                    @include('layout/admin/topnav')
+            @include('layout/admin/topnav')
 
-               
-                    @include('layout/admin/product-sidebar')
+            <div class="app-content">
+            @include('layout/admin/product-sidebar')
 
-                        @yield('content')
+                @yield('content')
 
-                    @include('layout/admin/footer')
-        </div>
+           
+</div>
+@include('layout/admin/footer')
+</div>
 
             <script src="{{asset('assetsadmin/plugins/jquery/jquery.min.js')}}"></script>
 

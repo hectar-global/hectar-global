@@ -15,7 +15,12 @@
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper" style="min-height: 600px;
+    padding: 40px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    margin-left: 0px;
+    width: 80%; overflow:scroll;">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -42,8 +47,8 @@
     <div class="container-fluid">
 
       <!-- Small boxes (Stat box) -->
-     
-      <div class="row">
+    
+      <div class="row" style="min-height: 600px; overflow:auto;">
         
         {{-- <div>  <span style="display:inline-block;margin-left:50px"></span>  </div> --}}
         
@@ -119,6 +124,8 @@
          <!-- ./col -->
       </div>
       <!-- /.row -->
+
+     
     
       <!-- Main row -->
 
@@ -180,7 +187,7 @@ $(function () {
                     
                       <div><label>Status</label></div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="1">
+                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="1" checked>
                         <label class="form-check-label" for="inlineRadio1">Active</label>
                       </div>
                       <div class="form-check form-check-inline">

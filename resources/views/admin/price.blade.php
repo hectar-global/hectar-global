@@ -15,7 +15,12 @@
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper" style="min-height: 600px;
+    padding: 40px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    margin-left: 0px;
+    width: 80%;">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -68,7 +73,7 @@
                 <form action="{{url('/update-price/'.request()->route()->prod_id.'/'.$variant->id)}}" method="POST" name="{{str_replace(' ', '_', $variant->name)}}" id="update_price" enctype="multipart/form-data">
                   @csrf
                   
-                    <div>{{$variant->name}}</div>
+                    <div>Variant name :  <strong>{{$variant->name}}</strong></div>
                     <div class="card pl-3 pb-3">
                       <?php
                         foreach($product->quality as $qualiti){
@@ -76,7 +81,7 @@
                         
                       ?>
                         <div class="row pt-3">
-                            <div class="col-lg-4 col-12">{{$qualiti->title}}</div>
+                            <div class="col-lg-4 col-12">Quality name :  <strong>{{$qualiti->title}}</strong></div>
                             <div class="col-lg-4 col-12">
                               <input type="text" name="price_{{$qualiti->id}}" value="">
                               {{-- <input type="hidden" name="qid" value="{{$qualiti->id}}"> --}}

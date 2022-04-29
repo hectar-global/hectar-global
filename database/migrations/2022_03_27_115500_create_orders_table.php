@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('product', 255);
             $table->string('variant', 255);
             $table->string('type', 255);
             $table->string('country', 255);
@@ -26,6 +25,10 @@ class CreateOrdersTable extends Migration
             $table->string('quantity', 255);
             $table->string('price', 255);
             $table->enum('status', ['1', '0'])->default('1');
+            $table->integer('product_id')->unsigned();
+            $table->index('product_id')->nullable();
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
+
             $table->bigInteger('user_id')->unsigned();
             $table->index('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

@@ -12,36 +12,31 @@ use Carbon\Carbon;
 
 
 @section('content')
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0 text-dark"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> Products</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          {{-- <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Variant</a></li>
-            <li class="breadcrumb-item active">Add</li>
-          </ol> --}}
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
 
-   <!-- Main content -->
-   <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12 text-right mb-3">
-              {{-- <a href="{{ url('/add-category') }}" class="btn btn-primary">Add</a> --}}
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Product</button>
-          </div>
+
+  
+    
+<div class="projects-section">
+      <div class="projects-section-header">
+        <p>Products</p>
+        <p class="time"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Product</button></p>
       </div>
-        <div class="card">
+      <div class="projects-section-line">
+        <div class="projects-status">
+          <div class="item-status">
+            <span class="status-number">45</span>
+            <span class="status-type">Active</span>
+          </div>
+          <div class="item-status">
+            <span class="status-number">24</span>
+            <span class="status-type">Inactive</span>
+          </div>
+          
+        </div>
+      
+      </div>
+      <div class="project-boxes">
+      <div class="card">
             {{-- <div class="card-header">
               <h3 class="card-title">View Variant</h3>
             </div> --}}
@@ -117,10 +112,12 @@ use Carbon\Carbon;
           </div>
           <!-- /.card -->
     </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+    
+  </div>
 
-</div>
+
+
+ 
 @endsection
 
 

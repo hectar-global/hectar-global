@@ -6,7 +6,7 @@
 
 
  <!-- wrapper  -->	
- <div id="wrapper">
+ <div id="wrapper" style="padding-top:0px">
     <!-- content -->	
     <div class="content">
         <div class="breadcrumbs fw-breadcrumbs top-smpar smpar fl-wrap">
@@ -21,7 +21,7 @@
                 </div>
                
                
-                <div class="like-btn"><i class="fas fa-weight"></i>Mandi Price List</div>
+                <div class="like-btn"><i class="fas fa-weight"></i>Not Sure? Request Callback!!</div>
             </div>
         </div>
         <div class="gray-bg small-padding fl-wrap ">
@@ -34,7 +34,12 @@
                             
                             <div class="list-single-header-item  fl-wrap  " id="sec1">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                <div class="col-md-3"><a href="#gallery">
+                                    <img src="{{asset('uploads/posts/'.$product->image)}}" alt="" style="width: 100%;
+    border-radius: 4px;    box-shadow: 0 5px 5px rgb(0 0 0 / 5%);
+    border: 1px solid #eee;padding:12px">    </a>
+                                </div>
+                                    <div class="col-md-6" style="margin-top:30px">
                                         <h1>{{$product->name}} <span class="verified-badge tolt" data-microtip-position="bottom"  data-tooltip="Verified"><i class="fas fa-check"></i></span></h1>
                                         <div class="geodir-category-location fl-wrap">
                                             <a href="#"><i class="fas fa-caret-circle-right"></i>  {{$product->category?$product->category->name:""}}</a> 
@@ -42,14 +47,15 @@
                                             
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <a class="host-avatar-wrap" href="#">
                                         <span>Origin: India</span>
                                         <img src="{{asset('assetfront/images/flag/in.png')}}" alt="">
                                         </a>
                                     </div>
                                 </div>
-                                <div class="list-single-header-footer fl-wrap">
+                                <div class="list-single-header-footer fl-wrap" style="color: #212121;
+    font-weight: 700;">
                                     <div class="list-single-header-price" data-propertyprise="50500"><strong>Price starts:</strong><span>$</span>{{$product->price?$product->price:"00.00"}} <small>
                                         per 
                                         <?php
@@ -70,108 +76,184 @@
                             </div>
                             
 <!--  list-single-opt_header-->
-<div class="list-single-opt_header fl-wrap" style="margin-top: 32px;margin-left: 32px;">
-<div class="list-single-main-item-title ">
-<h3>Hectar Grading & Sorting</h3>
-</div>
-<ul class="list-single-opt_header_cat">
-<li><strong>Explore Varaints:</strong> </li>
-@if($product->variant)
-@foreach($product->variant as $variant)
-    <li><a href="#" class="cat-opt my-gray-bg">{{$variant->name}}</a></li>
-@endforeach
-@endif
-</ul>
+<div class="list-single-opt_header fl-wrap" style="margin-top: 20px;margin-left: 0px;">
+
+
+
+
+
 
 </div>
 <!--  list-single-opt_header end -->
 <!-- section -->
 <section class="gray-bg very-small-padding ">
 
-<div class="container" style="display: {{$all_qalities?"block":"none"}};">
-<div class="compare-container fl-wrap">
-<div class="compare-counter"><span>Quality</span> Available</div>
-<div class="compare-header">
-    <ul>
-        <li>Age</li>
-        <li>Average Length</li>
-        <li>Color</li>
-        <li>Moisture Content</li>
-        <li>Loose Seeds</li>
-        <li>Price per MT</li>
-        <li>Hectar Grade</li>
-        <li>&nbsp;</li>
-    </ul>
+                 
+
+                        <div class="container" style="background:#fff;width:100%;padding: 20px; border:1px solid #f2f2f2;box-shadow:0px 0px 24px rgb(0 0 0 / 6%);    height: 540px;overflow-y: scroll;border-radius:4px;">
+                      
+                        <div><img src="/assetfront/home-images/hectar-quality.png" class="respimg" alt="" style="width: 80px;margin-right:20px;float:left"/></div>
+<div class="list-single-main-item-title " style="">
+<h3>Hectar Quality Guarantee</h3>
+<p style="margin-top:10px">Select variant to learn more:</p>
+
+<div class="containera">
+	<div class="tabsa">
+    @if($product->variant)
+@foreach($product->variant as $variant)
+<input type="radio" id="{{$variant->name}}" name="tabsa" />
+		<label class="taba" for="{{$variant->name}}">{{$variant->name}}</label>
+    @endforeach
+@endif
+		
+		<span class="glidera"></span>
+	</div>
 </div>
-<div class="compare-slider fl-wrap">
-    <!-- slick-slide-item -->
-    @foreach($product->quality as $result)
-    <div class="slick-slide-item">
-        <div class="compare-column">
-            <div class="compare-link fl-wrap">
-                <div class="compare-link-meia fl-wrap">
-                    <div class="bg par-elem "  data-bg="{{asset('uploads/posts/'.$product->image)}}"></div>
-                </div>
-                <h4><a href="#">{{$result->title}}</a></h4>
-            </div>
-            <div class="compare-content">
-                <ul>
-                    <li> < 3 months</li>
-                    <li>80mm+</li>
-                    <li>Bright Red</li>
-                    <li>12-14%</li>
-                    <li>2-4%</li>
-                    <li>10</li>
-                    <li>A</li>
-                    <li>cta</li>
-                </ul>
+</div>
+                        
+
+                      <div>
+                        
+
+                        <div class="compare-table-container hth-table-wrapper" >
+        <div class="white-overlay">
+            <a data-role="scroll-to-next" href="#"></a>
+        </div>
+        <div class="hth-table-holder" data-role="scroll-hold">
+            <div class="scroll-hold">
+                <table class="compare-black-table compare-us-table hth-table">
+                    <tbody class="t-body">
+                        <tr>
+                            <td class="labels_col" style="width:320px"><b>Quality</b></td>
+                            <td class="large-text"><b>Deluxe</b></td>
+                            <td class="large-text"><b>Best</b></td>
+                            <td class="large-text"><b>Medium Best</b></td>
+                            <td class="large-text"><b>Medium</b></td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="labels_col">
+                                <div class="tooltip_hold">
+                                    Status
+                                    <div class="tooltip">
+                                        <p>In Stock</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="large-text"><span class="yes"></span></td>
+                            <td class="large-text"><span class="yes"></span></td>
+                            <td class="large-text"><span class="yes"></span></td>
+                            <td class="large-text"><span class="yes"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="labels_col">
+                                <div class="tooltip_hold">
+                                Age
+                                    <div class="tooltip">
+                                        <p>Storage is based on the latest SSD and set up in a redundant RAID 10 configuration. With this set up you will never have to worry about failed hard drives and data loss</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="w500"><span> &gt;=3 months</span></td>
+                            <td class="w500"><span>0-6 months</span></td>
+                            <td class="w500" ><span>0-12 months</span></td>
+                            <td class="w500" ><span>0-18 months</span></td>
+                        </tr>
+                        <tr>
+                            <td class="labels_col">
+                                <div class="tooltip_hold">
+                                    Average length
+                                    <div class="tooltip">
+                                        <p>Storage is based on the latest SSD and set up in a redundant RAID 10 configuration. With this set up you will never have to worry about failed hard drives and data loss</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="w500" ><span> 60-80 mm</span></td>
+                            <td class="w500" ><span></span>80-100 mm</td>
+                            <td class="w500" ><span>100-120 mm</span></td>
+                            <td class="w500" ><span>120-140 mm</span></td>
+                        </tr>
+                        <tr>
+                            <td class="labels_col">
+                                <div class="tooltip_hold">
+                                Loose Seed
+                                    <div class="tooltip">
+                                        <p>Storage is based on the latest SSD and set up in a redundant RAID 10 configuration. With this set up you will never have to worry about failed hard drives and data loss</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="w500"  ><span> 10%</span></td>
+                            <td class="w500" ><span></span>8%</td>
+                            <td class="w500" ><span>6%</span></td>
+                            <td class="w500" ><span>5%</span></td>
+                        </tr>
+                        <tr>
+                            <td class="labels_col">
+                                <div class="tooltip_hold">
+                                Color
+Consistency
+                                    <div class="tooltip">
+                                        <p>Storage is based on the latest SSD and set up in a redundant RAID 10 configuration. With this set up you will never have to worry about failed hard drives and data loss</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="w500" ><span>Bright Red</span></td>
+                            <td class="w500" ><span></span>red</td>
+                            <td class="w500" ><span>orange</span></td>
+                            <td class="w500" ><span>yellow</span></td>
+                        </tr>
+                        <tr>
+                            <td class="labels_col" c><b>Hectar Grade</b></td>
+                            <td class="large-text" style="border-right:none"><img src="/assetfront/home-images/a.png" style="height:100px"/> </td>
+                            <td class="large-text" style="border-right:none"><img src="/assetfront/home-images/b.png" style="height:100px"/></td>
+                            <td class="large-text" style="border-right:none"><img src="/assetfront/home-images/c.png" style="height:100px"/></td>
+                            <td class="large-text" style="border-right:none"><img src="/assetfront/home-images/d.png" style="height:100px"/></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    @endforeach
-    <!-- slick-slide-item end-->
-    								
-   
-</div>
-</div>
-</div>
 
-{{-- available quality end --}}
+                        </div>
+
+                    </div>
 
 <div class="list-single-facts fl-wrap">
 <!-- inline-facts -->
-<div class="inline-facts-wrap">
-<div class="inline-facts">
+<div class="inline-facts-wrap" >
+<div class="inline-facts" STYLE="padding: 0 10PX;">
     <i class="fal fa-certificate"></i>
     <h6>Quality Control</h6>
-    <span>test</span>
+    <span>Quality control involves testing units and determining if they are within the specifications for the final product.</span>
 </div>
 </div>
 <!-- inline-facts end -->
 <!-- inline-facts  -->
-<div class="inline-facts-wrap">
-<div class="inline-facts">
+<div class="inline-facts-wrap" >
+<div class="inline-facts" STYLE="padding: 0 10PX;">
     <i class="fal fa-allergies"></i>
     <h6>Grading & Sorting</h6>
-    <span>test</span>
+    <span>Sorting is a separation based on a individual physical properties of raw materials such as weight, size, shape, density, photometric property, etc.</span>
 </div>
 </div>
 <!-- inline-facts end -->
 <!-- inline-facts -->
 <div class="inline-facts-wrap">
-<div class="inline-facts">
+<div class="inline-facts" STYLE="padding:0 10PX;">
     <i class="fal fa-backpack"></i>
     <h6>Packaging Options</h6>
-    <span>test</span>
+    <span>Packaging is the science, art and technology of enclosing or protecting products for distribution, storage, sale, and use.</span>
 </div>
 </div>
 <!-- inline-facts end -->
 <!-- inline-facts -->
-<div class="inline-facts-wrap">
-<div class="inline-facts">
+<div class="inline-facts-wrap" >
+<div class="inline-facts" STYLE="padding: 0 10PX;">
     <i class="fal fa-ship"></i>
     <h6>Freight Tracking</h6>
-    <span>test</span>
+    <span> We use api and 3rd party integration to automatically identify and track the location of your shipment in real time</span>
 </div>
 </div>
 <!-- inline-facts end -->                                                                        
@@ -183,9 +265,12 @@
                             <div class="list-single-main-container fl-wrap">
                                 <!--   list-single-main-item -->
                                 <div class="list-single-main-item fl-wrap" id="sec3">
-                                    <div class="list-single-main-item-title fl-wrap">
-                                        <h3>Available Variants</h3>
-                                    </div>
+                                <div><img src="/assetfront/home-images/hectar-variant.png" class="respimg" alt="" style="width: 80px;margin-right:20px;float:left"/></div>
+<div class="list-single-main-item-title " style="">
+<h3>Variant options available</h3>
+<p style="margin-top:10px">We ensure absolute certainty on the quality of your purchase by defining objective rules for Quality and grading of all our products.</p>
+
+</div>
                                     <!--   rooms-container -->
                                     <div class="rooms-container fl-wrap">
                                         <!--  rooms-item -->
@@ -205,7 +290,6 @@
                                             </div>
                                             <div class="rooms-details">
                                                 <div class="rooms-details-header fl-wrap">
-                                                    <span class="rooms-area">~ {{$product->price?$product->price:"00.00"}}<strong> / mt</strong></span>
                                                     <h3>{{$variant_result->name}}</h3>
                                                     <h5>Type: <span>{{$all_types?$all_types:""}}</span></h5>
                                                     <h5>Quality: <span>{{$all_qalities?$all_qalities:""}}</span></h5>
@@ -242,32 +326,91 @@
                                     <!--   rooms-container end -->
                                 </div>
                                 <!-- list-single-main-item end -->	
-                                <!-- list-single-main-item -->
-                                <div class="list-single-main-item fl-wrap">
-                                    <div class="list-single-main-item-title">
-                                        <h3>About Product</h3>
-                                    </div>
-                                    <div class="list-single-main-item_content fl-wrap">
-                                        <p>{{$product->details?$product->details->product_description:""}}</p>
-                                        {{-- <a href="#" class="btn float-btn color-bg">read more</a> --}}
-                                    </div>
-                                </div>
-                                <!-- list-single-main-item end -->  
-                                
-                                <!-- list-single-main-item -->
-                                <div class="list-single-main-item fl-wrap">
-                                    <div class="list-single-main-item-title">
-                                        <h3>Farming & Production</h3>
-                                    </div>
-                                    <div class="list-single-main-item_content fl-wrap">
-                                        <p></p>
-                                        {{-- <a href="#" class="btn float-btn color-bg">read more</a> --}}
-                                    </div>
-                                </div>
-                                <!-- list-single-main-item end -->  
+                               
 
                                 <!-- list-single-main-item -->
-                                <div class="list-single-main-item fl-wrap" id="sec2">
+                                
+                                                                        
+                                <!-- list-single-main-item -->
+                                <div class="list-single-main-item fl-wrap">
+                                    <div class="list-single-main-item-title">
+                                    <div><img src="/assetfront/home-images/hectar-packaging.png" class="respimg" alt="" style="width: 80px;margin-right:20px;float:left"/></div>
+<div class="list-single-main-item-title " style="">
+<h3>Packaging options available</h3>
+<p style="margin-top:10px">Packaging is the science, art and technology of enclosing or protecting products for distribution, storage, sale, and use. We make sure to deliver in the best packaging available</p>
+
+</div>
+                                    </div>
+                                    <div class="accordion">
+
+                                    <?php
+                                        foreach ($product->packaging as $result) {
+
+                                        ?>
+                                        <a class="toggle act-accordion" href="#"> {{$result->name}} <strong>{{$result->volume}} {{$result->unit}}</strong> <span></span>  </a>
+                                        <div class="accordion-inner visible">
+                                            <img src="images/plans/1.jpg" alt="">
+                                            <p>{{$result->description}}</p>
+                                        </div>
+                                    <?php } ?>
+                                    </div>
+                                     <!--box-widget-->
+                        <div class="box-widget fl-wrap small-padding">
+                            <div class="box-widget-title fl-wrap">
+                            <div><img src="/assetfront/home-images/hectar-certified.png" class="respimg" alt="" style="width: 80px;margin-right:20px;float:left"/></div>
+<div class="list-single-main-item-title " style="">
+<h3>Hectar Certification</h3>
+<p style="margin-top:10px">Packaging is the science, art and technology of enclosing or protecting products for distribution, storage, sale, and use. We make sure to deliver in the best packaging available</p>
+
+</div>
+                            </div>
+                            <div class="box-widget-content fl-wrap">
+                                <div class="bwc_download-list">
+                                    @foreach($product->certificate as $results)
+                                        <a href="{{ asset('storage/app/public/uploads/posts/'.$results->documents) }}" download><span><i class="fal fa-file-pdf"></i></span>{{$results->title}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <!--box-widget end -->
+                                </div>
+                                <!-- list-single-main-item end --> 
+                                 
+
+                            <div class="list-single-main-media fl-wrap" id="gallery">
+                                <div class="list-single-main-item-title " style="margin-top: 32px;margin-left: 32px;">
+                                <div><img src="/assetfront/home-images/hectar-gallery.png" class="respimg" alt="" style="width: 80px;margin-right:20px;float:left"/></div>
+<div class="list-single-main-item-title " style="">
+<h3>Hectar Gallery</h3>
+<p style="margin-top:10px">Explore product images</p>
+
+</div>
+                                </div>
+                                <div class="single-slider-wrapper carousel-wrap fl-wrap">
+                                    <div class="slider-for fl-wrap carousel lightgallery"  >
+                                        <!--  slick-slide-item -->
+                                        @foreach($product->gallery as $result)
+                                        <div class="slick-slide-item">
+                                            <div class="box-item">
+                                                <a href="#" class="gal-link popup-image"><i class="fal fa-search"  ></i></a>
+                                                <img src="{{asset('uploads/gallery/'.$result->name)}}" alt="">
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        <!--  slick-slide-item end -->
+                                    </div>
+                                    <div class="swiper-button-prev ssw-btn"><i class="fas fa-caret-left"></i></div>
+                                    <div class="swiper-button-next ssw-btn"><i class="fas fa-caret-right"></i></div>
+                                </div>
+                                <div class="single-slider-wrapper fl-wrap">
+                                    <div class="slider-nav fl-wrap">
+                                    @foreach($product->gallery as $result)
+                                        <div class="slick-slide-item"><img src="{{asset('uploads/gallery/'.$result->name)}}" alt=""></div>
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>                                                        
+                            <div class="list-single-main-item fl-wrap" id="sec2">
                                     <div class="list-single-main-item-title">
                                         <h3>Details</h3>
                                     </div>
@@ -312,213 +455,106 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- list-single-main-item end -->                                        
+                                     <!-- list-single-main-item -->
+                                <div class="list-single-main-item fl-wrap">
+                                    <div class="list-single-main-item-title">
+                                        <h3>About Product</h3>
+                                    </div>
+                                    <div class="list-single-main-item_content fl-wrap">
+                                        <p>{{$product->details?$product->details->product_description:""}}</p>
+                                        {{-- <a href="#" class="btn float-btn color-bg">read more</a> --}}
+                                    </div>
+                                </div>
                                 <!-- list-single-main-item end -->  
-                                                                        
+                                
                                 <!-- list-single-main-item -->
                                 <div class="list-single-main-item fl-wrap">
                                     <div class="list-single-main-item-title">
-                                        <h3>Packaging Options</h3>
-                                    </div>
-                                    <div class="accordion">
-
-                                    <?php
-                                        foreach ($product->packaging as $result) {
-
-                                        ?>
-                                        <a class="toggle act-accordion" href="#"> {{$result->name}} <strong>{{$result->volume}} {{$result->unit}}</strong> <span></span>  </a>
-                                        <div class="accordion-inner visible">
-                                            <img src="images/plans/1.jpg" alt="">
-                                            <p>{{$result->description}}</p>
-                                        </div>
-                                    <?php } ?>
-                                    </div>
-                                     <!--box-widget-->
-                        <div class="box-widget fl-wrap small-padding">
-                            <div class="box-widget-title fl-wrap">Certification Documents</div>
-                            <div class="box-widget-content fl-wrap">
-                                <div class="bwc_download-list">
-                                    @foreach($product->certificate as $results)
-                                        <a href="{{ asset('storage/app/public/uploads/posts/'.$results->documents) }}" download><span><i class="fal fa-file-pdf"></i></span>{{$results->title}}</a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <!--box-widget end -->
-                                </div>
-                                <!-- list-single-main-item end --> 
-                                 
-
-                            <div class="list-single-main-media fl-wrap">
-                                <div class="list-single-main-item-title " style="margin-top: 32px;margin-left: 32px;">
-                                    <h3>Gallery</h3>
-                                </div>
-                                <div class="single-slider-wrapper carousel-wrap fl-wrap">
-                                    <div class="slider-for fl-wrap carousel lightgallery"  >
-                                        <!--  slick-slide-item -->
-                                        @foreach($product->gallery as $result)
-                                        <div class="slick-slide-item">
-                                            <div class="box-item">
-                                                <a href="#" class="gal-link popup-image"><i class="fal fa-search"  ></i></a>
-                                                <img src="{{asset('uploads/gallery/'.$result->name)}}" alt="">
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                        <!--  slick-slide-item end -->
-                                    </div>
-                                    <div class="swiper-button-prev ssw-btn"><i class="fas fa-caret-left"></i></div>
-                                    <div class="swiper-button-next ssw-btn"><i class="fas fa-caret-right"></i></div>
-                                </div>
-                                <div class="single-slider-wrapper fl-wrap">
-                                    <div class="slider-nav fl-wrap">
-                                    @foreach($product->gallery as $result)
-                                        <div class="slick-slide-item"><img src="{{asset('uploads/gallery/'.$result->name)}}" alt=""></div>
-                                    @endforeach
-                                    </div>
-                                </div>
-                            </div>                                            
-                                <!-- list-single-main-item -->
-                                <div class="list-single-main-item fl-wrap" id="sec4">
-                                    <div class="list-single-main-item-title">
-                                        <h3>Product Video</h3>
+                                        <h3>Farming & Production</h3>
                                     </div>
                                     <div class="list-single-main-item_content fl-wrap">
-                                        <div class="video-box fl-wrap">
-                                            <img src="{{asset('assetfront/images/all/1.jpg')}}" class="respimg" alt="">
-                                            <a class="video-box-btn image-popup color-bg" href="https://vimeo.com/158059890"><i class="fas fa-play"></i></a>
-                                        </div>
+                                        <p></p>
+                                        {{-- <a href="#" class="btn float-btn color-bg">read more</a> --}}
                                     </div>
                                 </div>
-                                <!-- list-single-main-item end -->                                             
-                                                                         
-                                <!-- list-single-main-item -->
-                                <div class="list-single-main-item fl-wrap" id="sec6">
-                                    <div class="list-single-main-item-title">
-                                        <h3>Reviews <span>2</span></h3>
-                                    </div>
-                                    <div class="list-single-main-item_content fl-wrap">
-                                        <div class="reviews-comments-wrap fl-wrap">
-                                            <div class="review-total">
-                                                <span class="review-number blue-bg">4.0</span>
-                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="4"><span class="re_stars-title">Good</span></div>
-                                            </div>
-                                            <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="{{asset('assetfront/images/avatar/1.jpg')}}" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text smpar">
-                                                    <div class="box-widget-menu-btn smact"><i class="far fa-ellipsis-h"></i></div>
-                                                    <div class="show-more-snopt-tooltip bxwt">
-                                                        <a href="#"> <i class="fas fa-reply"></i> Reply</a>
-                                                        <a href="#"> <i class="fas fa-exclamation-triangle"></i> Report </a>
-                                                    </div>
-                                                    <h4><a href="#">Liza Rose</a></h4>
-                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="3"><span class="re_stars-title">Average</span></div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
-                                                    <div class="reviews-comments-item-date"><span class="reviews-comments-item-date-item"><i class="far fa-calendar-check"></i>12 April 2018</span><a href="#" class="rate-review"><i class="fal fa-thumbs-up"></i>  Helpful Review  <span>6</span> </a></div>
-                                                </div>
-                                            </div>
-                                            <!--reviews-comments-item end--> 
-                                            <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="{{asset('assetfront/images/avatar/1.jpg')}}" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text smpar">
-                                                    <div class="box-widget-menu-btn smact"><i class="far fa-ellipsis-h"></i></div>
-                                                    <div class="show-more-snopt-tooltip bxwt">
-                                                        <a href="#"> <i class="fas fa-reply"></i> Reply</a>
-                                                        <a href="#"> <i class="fas fa-exclamation-triangle"></i> Report </a>
-                                                    </div>
-                                                    <h4><a href="#">Adam Koncy</a></h4>
-                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"><span class="re_stars-title">Excellent</span></div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                                    <div class="reviews-comments-item-date"><span class="reviews-comments-item-date-item"><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#" class="rate-review"><i class="fal fa-thumbs-up"></i>  Helpful Review  <span>2</span> </a></div>
-                                                </div>
-                                            </div>
-                                            <!--reviews-comments-item end-->                                                                  
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- list-single-main-item end -->                                             
-                                                                          
+                                <!-- list-single-main-item end -->                                        
                             </div>
+                            
                         </div>
                     </div>
                     <!-- listing-single content end-->
+                     
                     <!-- sidebar -->
                     <div class="col-md-4">
                         <!--box-widget-->
                         <div class="box-widget fl-wrap hidden-section" >
-                            <div class="box-widget-content fl-wrap color-bg box-widget-fixed-init">
-                                <div class="color-form reset-action">
+                            <div class="box-widget-content fl-wrap box-widget-fixed-init" >
+                                <div class="reset-action">
                                     <div class="color-form-title fl-wrap">
                                         <h4>Calculate CIF Quote</h4>
                                         <p>only takes 30 secs.</p>
                                     </div>
-                                    <form method="post"  action="{{url('/calculate-quote/'.request()->route()->prod_id)}}" name="mortgage-form">
+
+	
+
+
+                                    <!-- form action - {{url('/calculate-quote/'.request()->route()->prod_id)}} -->
+                                    <form method=""  action="/completequote" name="mortgage-form">
                                         @csrf
                                         <div class="fl-wrap">
-                                            <label for="amt">Select Variant </label>   
-                                            <select name="variant" data-placeholder="" class="chosen-select on-radius no-search-select" style="margin-bottom:8px;" >
-                                            @foreach($product->variant as $variant)
-                                                <option value="{{$variant->id}}">{{$variant->name}}</option>
-                                            
-                                            @endforeach  
-                                                
-                                            </select>  
-                                            
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <label>Select Type  </label>
-                                            <select name ="type" data-placeholder="" class="chosen-select on-radius no-search-select" >
-                                                @foreach($product->type as $type)
-                                                    <option value="{{$type->id}}">{{$type->title}}</option>
-                                                @endforeach
-                                            </select> 
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <label>Select Quality  </label>
-                                                <select name="quality" data-placeholder="" class="chosen-select on-radius no-search-select" >
-                                                @foreach($product->quality as $quality)
-                                                    <option value="{{$quality->id}}">{{$quality->title}}</option>
-                                                @endforeach 
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
+                                        <div class="section over-hide z-bigger">
+		<input class="checkbox" type="checkbox" name="general" id="general">
+		<div class=" over-hide z-bigger">
+			<div class="pb-5">
+				<div class=" justify-content-center pb-5" style="text-align:left;">
+					<div class="pb-5">
+                    <label class="select-label cif-label">Variant name :</label>
+                    @foreach($product->variant as $variant)
+						<input class="checkbox-tools" type="radio" name="variant" id="variant-{{$variant->id}}" >
+						<label class="for-checkbox-tools" for="variant-{{$variant->id}}">
+                        {{$variant->name}}
+						</label>
+                        @endforeach 
+					</div>              </div>
 
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <label>Select Packaging preference: </label>
-                                                <div class=" add-list-tags fl-wrap">
-                                                    <!-- Checkboxes -->
-                                                    <ul class="fl-wrap filter-tags no-list-style ds-tg">
-                                                        @foreach($product->packaging as $packaging)
-                                                        <li>
-                                                            <input id="check-aaa5" type="checkbox" name="packaging" checked="" value="{{$packaging->id}}">
-                                                            <label for="check-aaa5" style="margin: -15px 0px; padding-left:10px; padding-right:10px;"> {{$packaging->name}}</label>
-                                                        </li>
-                                                    @endforeach
-                                                        
-                                                    </ul>
-                                                    <!-- Checkboxes end -->												
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+                    <div class="pb-5" style="text-align:left;">
+                    <label class="select-label cif-label">Product type :</label>
+                    @foreach($product->type as $type)
+						<input class="checkbox-tools" type="radio" name="type" id="type-{{$type->id}}" >
+						<label class="for-checkbox-tools" for="type-{{$type->id}}">
+                        {{$type->title}}
+						</label>
+                        @endforeach 
+					</div> 
+                    <div class="pb-5" style="text-align:left;">
+                    <label class="select-label cif-label">Quality :</label>
+                    @foreach($product->quality as $quality)
+						<input class="checkbox-tools" type="radio" name="quality" id="{{$quality->id}}" >
+						<label class="for-checkbox-tools" for="{{$quality->id}}">
+                        {{$quality->title}}
+						</label>
+                        @endforeach 
+					</div> 
+                    <div class="pb-5" style="text-align:left;">
+                    <label class="select-label cif-label">Packaging :</label>
+                    @foreach($product->packaging as $packaging)
+						<input class="checkbox-tools" type="radio" name="packaging" id="packaging-{{$packaging->id}}" >
+						<label class="for-checkbox-tools" for="packaging-{{$packaging->id}}">
+                        {{$packaging->name}}
+						</label>
+                        @endforeach 
+					</div> 
+                
+                
+                
+                
+                </div>
                                         <div class="clearfix"></div>
                                         
-                                        <div class="reset-form reset-btn"> <i class="far fa-sync-alt"></i> Reset Form</div>
-                                        <button type="submit" id="sbt" class="color2-bg">Calculate CIF Quote</button>
-                                        <div class="monterage-title fl-wrap">
-                                            <h5>Price Mandi:</h5>
-                                            <input type="text" id="pmt" name="mPmt" value="0"> 
-                                            <div class="monterage-title-item">$<span></span></div>
-                                        </div>
+                                        <button type="submit" id="sbt" class="btn btn1 float-btn small-btn orange-bg"  style="color: #fff;
+    font-size: 16px;">Calculate CIF Quote</button>
+                                        
                                     </form>
                                 </div>
                             </div>
@@ -534,39 +570,7 @@
         </div>
     </div>
     <!-- content end -->	
-    <!-- subscribe-wrap -->	
-    <div class="subscribe-wrap fl-wrap">
-        <div class="container">
-            <div class="subscribe-container fl-wrap color-bg">
-                <div class="pwh_bg"></div>
-                <div class="mrb_dec mrb_dec3"></div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="subscribe-header">
-                            <h4>newsletter</h4>
-                            <h3>Sign up for newsletter and get latest news and update</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <div class="footer-widget fl-wrap">
-                            <div class="subscribe-widget fl-wrap">
-                                <div class="subcribe-form">
-                                    <form id="subscribe">
-                                        <input class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="Enter Your Email" spellcheck="false" type="text">
-                                        <button type="submit" id="subscribe-button" class="subscribe-button color-bg">  Subscribe</button>
-                                        <label for="subscribe-email" class="subscribe-message"></label>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- subscribe-wrap end -->	
-    
+                                                    </div>
     
 @stop
 

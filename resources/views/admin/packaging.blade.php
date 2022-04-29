@@ -1,5 +1,25 @@
 
-
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  display: inline-flex;
+  font-weight: bold;
+  vertical-align: top;
+}
+.main {
+  background: deepskyblue;
+  flex: 1;
+  text-align: center;
+}
+.image {
+  background: hotpink;
+  flex: 1;
+  height: 100%;
+}
+</style>
 
 {{-- @extends('layout.admin.adminmain') --}}
 
@@ -14,7 +34,12 @@
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper" style="min-height: 1200px;
+    padding: 40px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    margin-left: 0px;
+    width: 80%; overflow:scroll">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -43,11 +68,12 @@
       <!-- Small boxes (Stat box) -->
       <form action="{{url('/update-product/')}}" method="POST" name="editNews" id="editNews" enctype="multipart/form-data">
         @csrf
-      <div class="row">
+      <div class="row" style="min-height: 600px; overflow:auto;">
         
         {{-- <div>  <span style="display:inline-block;margin-left:50px"></span>  </div> --}}
-        
+       
         @foreach($packagings as $packag)
+       
         <div class="col-lg-3 col-6">
             
           <div class="card" style="width: 18rem;">
@@ -56,9 +82,9 @@
             
               <li class="list-group-item">
                @if($packag->image)
-                <img src="{{asset('uploads/posts/'.$packag->image)}}" style="width: 250px; heght:400px;">
+                <img src="{{asset('uploads/posts/'.$packag->image)}}" style="width: 250px; heght:300px;">
                 @else
-                <img src="{{asset('uploads/posts/no-image-available.jpg')}}" style="width: 250px; heght:400px;">
+                <img src="{{asset('uploads/posts/no-image-available.jpg')}}" style="width: 250px; heght:300px;">
                 @endif
 
                 {{-- <div class="form-group">
@@ -74,7 +100,7 @@
                 <div style="float: left; padding-left:10px;">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div style="font-size: 28px;">{{$packag->name}}</div>
+                            <div style="font-size: 28px;">{{$packag->name}}</div> 
                             <div style="font-size: 18px;">{{$packag->cost}} $ per Bag ({{$packag->volume}}{{$packag->unit}})</div>
                         </div>
                     </div>
@@ -101,8 +127,9 @@
           </div>
           
         </div>
-        <div>  <span style="display:inline-block;margin-left:50px"></span>  </div> 
+        
         @endforeach
+      
         <!-- ./col -->
       </div>
       <!-- /.row -->

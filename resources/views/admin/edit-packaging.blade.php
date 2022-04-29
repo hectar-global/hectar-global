@@ -154,7 +154,8 @@
                       <button type="submit" class="btn btn-success">Save Changes</button>
                     </div>
                     <div class="col-md-3 col-sm-12">
-                        <button type="button" class="btn btn-light">Cancel</button>
+                        {{-- <button type="button" class="btn btn-light">Cancel</button> --}}
+                        <a href="javascript:history.back()" class="btn btn-light">Cancel</a>
                       </div>
                   </div>
               

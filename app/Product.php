@@ -68,8 +68,8 @@ class Product extends Model
         return $this->hasOne(Price::class);
     }
 
-    // public function country()
-    // {
-    //     return $this->hasMany(Country::class);
-    // }
+    public function countries()
+    {
+        return $this->hasMany(Country::class, 'id', 'country');
+    }
 }

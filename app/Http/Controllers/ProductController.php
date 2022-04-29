@@ -51,6 +51,7 @@ class ProductController extends Controller
               }
 
         $products->name = $request->name;
+        $products->price = $request->price;
 
         
 

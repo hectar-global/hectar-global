@@ -15,7 +15,12 @@
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="content-wrapper" style="min-height: 600px;
+    padding: 40px 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    margin-left: 0px;
+    width: 80%; overflow:scroll;">
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
@@ -50,7 +55,7 @@
       <!-- Small boxes (Stat box) -->
       <form action="{{url('/update-product-description/'.request()->route()->prod_id)}}" method="POST" name="update_product_details" id="update_product_details" enctype="multipart/form-data">
         @csrf
-      <div class="row">
+      <div class="row" style="min-height: 600px; overflow:auto;">
         <div class="col-lg-12 col-12">
             <?php $selected = explode(",", $product->category_id); ?>
             <div class="row">
@@ -93,7 +98,7 @@
             <div class="col-lg-12 col-12">
                 <div class="form-group purple-border">
                     <label for="exampleFormControlTextarea4">Product Description</label>
-                    <textarea class="form-control" id="product_description" name="product_description" rows="3">{{$products_details !="" ? $products_details->product_description:""}}</textarea>
+                    <textarea class="textarea form-control" id="product_description" name="product_description" rows="3">{{$products_details !="" ? $products_details->product_description:""}}</textarea>
                     {{-- <textarea class="form-control" id="certificate_description" name="certificate_description" rows="3"></textarea> --}}
                 </div>
             </div>
@@ -133,6 +138,16 @@ $(function() {
 $(function () {
       $('.select2').select2()
 });
+</script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+	$("#product_description").Editor();                   
+
+});
+
 </script>
 
 

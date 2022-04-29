@@ -12,6 +12,7 @@ use App\Product;
 use App\Quality;
 use App\Variant;
 use App\Category;
+use App\ordernew;
 use App\Packaging;
 use Carbon\Carbon;
 use App\ProductsDetails;
@@ -84,7 +85,7 @@ class QuoteController extends Controller
         //echo $cif_cost; die();
 
         $order = new Order;
-        $order->product = $prod_id;
+        $order->product_id = $prod_id;
         $order->user_id = Auth::user()->id;
         $order->variant = $variant;
         $order->type = $type;
@@ -199,5 +200,265 @@ class QuoteController extends Controller
         //return $packaging;
 
         //dd($request);
+    }
+
+    public function getQuote(Request $request)
+    {
+        return $request;
+
+        $freight_id = $request->loadability;
+
+        $freight = Freight::find($freight_id);
+        $country_id= $freight->country;
+
+        $prod_id = $request->prod_name;
+       // echo $freight_id; die();
+    }
+
+    public function completeQuote(Request $request)
+    {
+       // return $request;
+            
+
+        $freight_id = $request->loadability;
+      //  echo $freight_id;die();
+
+        $get_freight= Freight::with('countries', 'ports')->where('id', $freight_id)->first();
+
+        $get_loadability = $get_freight->container;
+
+       // return $get_loadability; die();
+
+        $get_country = $get_freight->countries->name;
+        $get_port = $get_freight->ports->name;
+
+        //return $get_port;die();
+        
+        $country_id= $request->country;
+
+        $prod_id = $request->prod_name;
+
+        $variants = Variant::where('product_id', $prod_id)->get();
+
+        $types = Type::where('product_id', $prod_id)->get();
+
+        $packagings = Packaging::where('product_id', $prod_id)->get();
+
+      //  return $types;die();
+        foreach($variants as $variant)
+        {
+            $variant_id= $variant->id;
+        }
+       // $variant_id= $request->variant;
+
+       // echo $variant_id;die();
+
+        $container = $get_loadability;
+        foreach($packagings as $packaging)
+        {
+            $packaging_id = $packaging->id;
+        }
+
+        $port_id = $get_freight->ports->id;
+        $product_id = $prod_id;
+        
+
+        $medium_mandi = Price::where('variant_id', $variant_id)->where('quality_id', 3)->first();
+        $medium_mandi_price = $medium_mandi->price;
+
+        $delux_mandi = Price::where('variant_id', $variant_id)->where('quality_id', 4)->first();
+        $delux_mandi_price = $delux_mandi->price;
+
+        $best_mandi = Price::where('variant_id', $variant_id)->where('quality_id', 5)->first();
+        $best_mandi_price = $best_mandi->price;
+
+
+
+
+        $medium_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 3);
+
+        $deluxe_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 4);
+
+        $best_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 5);
+        
+        return view('completequote')->with(compact('medium_mandi_price', 'delux_mandi_price', 
+        'best_mandi_price', 'prod_id', 'get_freight', 
+        'variants', 'types', 'packagings', 'freight_id', 
+        'medium_CIF_cost', 'deluxe_CIF_cost', 'best_CIF_cost', 
+        'variant_id', 'country_id', 'port_id', 'container', 'packaging_id', 'product_id'));
+    }
+
+    public function completeQuoteTwo(Request $request)
+    {
+        // return $request; die();       
+
+        $variant_id= $request->variant;
+
+        $country_id = $request->country;
+        $port_id = $request->port;
+        $container = $request->cantainer; //loadability
+        $packaging_id = $request->packaging;
+        $product_id = $request->prod_id;
+        //$type_id = $request->type_id;
+
+       // echo $port_id;die();
+
+       // return $container; die(); 
+
+        //localStorage.setItem("prod_info", JSON.stringify(prod_info));
+
+        /// calculate price for medium
+
+        $medium_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 3);
+
+        $deluxe_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 4);
+
+        $best_CIF_cost = $this->getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, 5);
+
+        // echo $medium_CIF_cost."<br>";
+        // echo $deluxe_CIF_cost."<br>";
+        // echo $best_CIF_cost;
+
+        $variants = Variant::where('product_id', $request->prod_id)->get();
+        $packagings = Packaging::where('product_id', $request->prod_id)->get();
+        $freight_id = $request->freight_id;
+
+        $get_freight= Freight::with('countries', 'ports')->where('id', $freight_id)->first();
+
+        //return $get_freight;die();
+
+        $medium_mandi = Price::where('variant_id', $variant_id)->where('quality_id', 3)->first();
+        $medium_mandi_price = $medium_mandi->price;
+
+        $delux_mandi = Price::where('variant_id', $variant_id)->where('quality_id', 4)->first();
+        $delux_mandi_price = $delux_mandi->price;
+
+        $best_mandi = Price::where('variant_id', $variant_id)->where('quality_id', 5)->first();
+        $best_mandi_price = $best_mandi->price;
+
+       // echo $best_mandi_price;die();
+
+        $pages_array =[
+            [
+                "medium" => $medium_CIF_cost,
+            ],
+            [
+                "deluxe" => $deluxe_CIF_cost,
+            ],
+            [
+                "best" => $best_CIF_cost,
+            ]
+        
+        ];
+
+        // $prod_info =[
+        //     'variant_id' => $variant_id,
+        //     'country_id' => $country_id,
+        //     'lodability' => $container, 
+        //     'packaging_id' => $packaging_id,
+        //     'product_id' => $product_id,
+        // ];
+
+        //return $pages_array['0'];die();
+
+        return view('completequote-two')->with(compact('best_mandi_price', 
+        'delux_mandi_price', 'medium_mandi_price', 'best_CIF_cost', 
+        'deluxe_CIF_cost', 'medium_CIF_cost', 'variants', 
+        'packagings', 'get_freight', 'variant_id', 'country_id', 'container', 'packaging_id', 'product_id', 'port_id'));
+
+
+        // return [
+        //     'best_mandi_price', 
+        // 'delux_mandi_price', 'medium_mandi_price', 'best_CIF_cost', 
+        // 'deluxe_CIF_cost', 'medium_CIF_cost', 'variants', 
+        // 'packagings', 'get_freight', 'variant_id', 'country_id', 'container', 'packaging_id', 'product_id', 'port_id'
+        // ];
+    }
+
+    public function orderPlace(Request $request)
+    {
+       // return $request;die();
+       // $uid = Auth::id();
+
+      // echo $uid;die();
+        $variant_id = $request->variant_id;
+        $country_id = $request->country_id;
+        $port_id = $request->port_id;
+        $lodability = $request->lodability;
+        $packaging_id = $request->packaging_id;
+        $product_id = $request->product_id;
+        $quality = $request->quality;
+
+        $CIF_cost = $request->CIF_cost;
+
+        $order = new ordernew();
+        $order->product_id = $product_id;
+        $order->user_id = Auth::user()->id;
+        $order->variant = $variant_id;
+       // $order->type = $type;
+        $order->quality = $quality;
+        $order->country = $country_id;
+        $order->port = $port_id;
+        $order->packaging = $packaging_id;
+        $order->loadability = $lodability;
+        $order->quantity = "1";
+        $order->status = "1"; // Awaiting confirmation
+        $order->price = $CIF_cost;
+        $order->save();
+
+        return redirect('/mydashboard');
+
+    }
+
+    
+
+    private function getQuoteCal($variant_id, $country_id, $port_id, $packaging_id, $container, $quality_id)
+    {
+        $medium_mandi = Price::where('variant_id', $variant_id)->where('quality_id', $quality_id)->first();
+        $medium_mandi_price = $medium_mandi->price;
+        $medium_final_price = $medium_mandi_price / 75;
+
+        $medium_freight = Freight::where('country', $country_id)->where('port', $port_id)->where('container', $container)->first();
+        $medium_freight_cost = $medium_freight->cost * 1; // 1 is quantity
+
+        $medium_total_volume = $medium_freight->volume * 1 ; //1 is quantity
+
+        $medium_packaging = Packaging::where('id', $packaging_id)->first();
+        $medium_packaging_volume = $medium_packaging->volume;
+        
+        $medium_total_packages = ($medium_total_volume * 1000)/ $medium_packaging_volume;
+
+        $medium_packaging_cost = $medium_packaging->cost * $medium_total_packages;
+
+        $medium_CIF_cost = ($medium_mandi_price * $medium_total_volume) + $medium_packaging_cost + ($medium_freight_cost);
+
+        return $medium_CIF_cost;
+    }
+
+    public function quoteList()
+    {
+
+        $orders = ordernew::with('user', 'product')->where('status',  "1")->get();
+
+        $order_count = count($orders);
+
+        $orders_count = $order_count? $order_count:"";
+
+       // return $orders;die();
+        return view('admin.quote-list')->with(compact('orders', 'orders_count'));
+    }
+
+    public function updateStatus(Request $request)
+    {
+
+        $product = ordernew::find($request->order_id);
+        $product->status = $request->status_val;
+        $result = $product->update();
+        if($result)
+        {
+            //$request->session()->flash('success', 'Product status updated sucessfully');
+            return array("status" => "Product status updated sucessfully");
+        }
+        
     }
 }

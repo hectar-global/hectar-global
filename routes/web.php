@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-     return view('index');
+// Route::get('/', function () {
 
-    //return "Home";
-});
+//      return view('index');
 
-// Route::get('/', 'IndexController@index');
+// });
+
+ Route::get('/', 'IndexController@index');
+
+ Route::post('/get-quote', 'QuoteController@getQuote');
+ Route::post('/completequote', 'QuoteController@completeQuote');
+ Route::post('/completequote-steptwo', 'QuoteController@completeQuoteTwo');
+//  Route::post('/place-order', 'QuoteController@placeOrder');
 
 
 
@@ -55,6 +60,18 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/update-product/{id}', 'ProductController@update');
     Route::post('/update-product-status/', 'ProductController@updateStatus');
     Route::get('/product-delete/{id}', 'ProductController@delete');
+
+    // Orsers
+    Route::get('/orders', 'OrderController@orderList');
+    Route::get('/order-edit/{id}', 'OrderController@edit');
+    Route::post('/update-order-status/', 'OrderController@updateStatus');
+    Route::get('/order-details/{id}', 'OrderController@orderDetails');
+    Route::post('/update-order-details-status/{id}', 'OrderController@updateDetailsStatus');
+
+
+    // Quotes
+    Route::get('/quotes', 'QuoteController@quoteList');
+    Route::post('/update-quote-status/', 'QuoteController@updateStatus');
 
 
     // Product Dashboard
@@ -143,12 +160,14 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     // country and ports
 
     Route::post('/get_port','CountryPortController@getPort')->name('ajaxdata.get_port');
-
+    
+    
     
 
 });
 
-Route::group(['middleware' => ['user']], function () {
+//Route::group(['middleware' => ['user']], function () {
+    Route::group(['middleware' => ['auth', 'user']], function () {
 
     //Route::get('/products-list', 'ProductController@listProducts');
     //Route::get('/product-details/{prod_id}', 'ProductController@productById');
@@ -156,6 +175,20 @@ Route::group(['middleware' => ['user']], function () {
     Route::post('/generate-quote/{prod_id}', 'QuoteController@generateQuote');
     Route::post('/calculate-quote/{prod_id}', 'QuoteController@calculateQuote');
 
+    Route::post('/place-orders', 'QuoteController@placeOrder');
+    Route::get('/orderplace', 'QuoteController@orderPlace');
+
+    Route::get('/mydashboard', 'UserDashboardController@index');
+
+    
+
+    // Route::get('/test', function () {
+
+    //     return "dasdasda";
+        
+    //      });
+    
+    
 
 
 });
@@ -167,3 +200,11 @@ Route::get('/getotp', 'User\SignupController@getOtp');
 Route::post('/verifyotp', 'User\SignupController@verifyOtp');
 Route::post('/get_ports','CountryPortController@getPort')->name('ajaxdata.get_ports');
 Route::get('/customer-login', 'User\CustomerController@customerLogin');
+Route::get('/about', 'PagesController@aboutUs');
+Route::get('/userlogin', 'User\CustomerController@userLogin');
+
+// Route::get('/userlogin', function () {
+
+//         return view('user-login');
+        
+// });

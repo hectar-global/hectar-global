@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Packaging;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class PackagingController extends Controller

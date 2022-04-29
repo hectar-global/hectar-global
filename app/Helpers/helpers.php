@@ -45,7 +45,7 @@ function port_arr(){
 
 function container_arr(){
 
-    $container_data = array("80ft"=>"80ft", "100ft"=>"100ft", "200ft"=>"200ft", "400ft"=>"400ft");
+    $container_data = array("20ft"=>"20ft", "40ft"=>"40ft");
 
     return $container_data;
 }
