@@ -28,9 +28,9 @@
 
 </div>
               
-          <form name="cif_quote" method="post" action="/completequote-steptwo">
-            {{-- <form name="cif_quote" method="post" action="/completequote"> --}}
-              {{-- <form name="cif_quote"> --}}
+          {{-- <form name="cif_quote" method="post" action="/completequote-steptwo"> --}}
+            {{-- <form name="cif_quote" method="get" action="/completequote"> --}}
+          <form name="cif_quote" id="cif_quote">
             @csrf
               <div class="container">
                 <div class="payment">
@@ -38,11 +38,12 @@
                   <div class="pb-5" style="text-align:left;">
                     <label class="select-label cif-label">Select Variant :</label>
                     @foreach($variants as $variant)
-						        <input class="checkbox-tools" type="radio" name="variant" id="{{$variant->id}}" value="{{$variant->id}}" >
+						        <input class="checkbox-tools variant" type="radio" name="variant" id="{{$variant->id}}" value="{{$variant->id}}" >
 						          <label class="for-checkbox-tools" for="{{$variant->id}}">
                         {{$variant->name}}
 						          </label>
                   @endforeach  
+                  <input type="hidden" name="variantc" value="" id="variantc">
 					      </div> 
 
                 {{-- <div class="pb-5" style="text-align:left;">
@@ -62,7 +63,8 @@
                   <label class="for-checkbox-tools" for="{{$packaging->id}}">
                     {{$packaging->name}}
                   </label>
-              @endforeach  
+              @endforeach
+              <input type="hidden" name="packagingc" value="" id="packagingc">  
             </div> 
                  
                 {{-- <div class="pb-5" style="text-align:left;">
@@ -73,10 +75,10 @@
 						          </label>
                   
 					      </div>  --}}
-                <input type="hidden" name="cantainer" value="{{$get_freight->container}}">
-                <input type="hidden" name="prod_id" value="{{$prod_id}}">
-                <input type="hidden" name="freight_id" value="{{$freight_id}}">
-                <input type="hidden" name="loadability" value="{{$freight_id}}">
+                <input type="hidden" name="cantainer" id="cantainer" value="{{$container}}">
+                <input type="hidden" name="prod_id" id="prod_id" value="{{$prod_id}}">
+                <input type="hidden" name="freight_id" id="freight_id" value="{{$freight_id}}">
+                <input type="hidden" name="loadability" id="loadability" value="{{$container}}">
                   <div class="payment__info">
                     <div class="payment__cc">
                       <div class="payment__title">
@@ -89,7 +91,7 @@
                             <div class="field ">
                               <div class="title">Country Name
                               </div>
-                              <select class="input ddl">
+                              <select class="input ddl" id="country_id">
                                 <option selected value="{{$get_freight->countries->id}}">{{$get_freight->countries->name}}</option>
 
                               </select>
@@ -98,7 +100,7 @@
                             <div class="field ">
                               <div class="title">Port Name
                               </div>
-                              <select name="port" class="input ddl">
+                              <select name="port" class="input ddl" id="port_id">
                                 <option>Select Port</option>
                                 <option selected value="{{$get_freight->ports->id}}">{{$get_freight->ports->name}}</option>
 
@@ -116,13 +118,17 @@
               <div class="container">
                 <div class="actions">
 
-                  {{-- <a href="#" class="btn btn1 float-btn small-btn orange-bg" id="cifb">Calculate CIF Quote
+                  <a href="#" class="btn btn1 float-btn small-btn orange-bg" id="cifb">Calculate CIF Quote
                     <i class="icon icon-arrow-right-circle"></i>
-                  </a> --}}
+                  </a>
 
-                  <button type="submit" href="#" class="btn btn1 float-btn small-btn orange-bg" id="cifbb">Calculate CIF Quote
+                  {{-- <button type="button" href="#" class="btn btn1 float-btn small-btn orange-bg" id="cifb">Calculate CIF Quote
                     <i class="icon icon-arrow-right-circle"></i>
-                  </button>
+                  </button> --}}
+
+                  {{-- <button type="submit" href="#" class="btn btn1 float-btn small-btn orange-bg" id="cifbb">Calculate CIF Quote
+                    <i class="icon icon-arrow-right-circle"></i>
+                  </button> --}}
                   <a href="#" class="backBtn" id="cal">Go Back to product page</a>
 
                   
@@ -174,7 +180,7 @@
               <div class="discount"></div>
 </div>
 
-<div class="content quo2" style="display:none">
+<div class="content quo2" id="quote_disp" style="display: none">
 <div class="details shadow">
                 <div class="details__item" STYLE="TEXT-ALIGN:LEFT">
 
@@ -215,10 +221,10 @@
     <details class="card1">
       <summary class="property lightblue">
         <span class="eyebrow">Medium Quality</span>
-        ${{$medium_CIF_cost}}.00 <span>per MT</span>
+        <span id="medium_CIF_cost">${{$medium_CIF_cost}}</span>.00 <span>per MT</span>
       </summary>
      
-      <p class="rent">Mandi Price : $ {{$medium_mandi_price}} per MT</p>
+      <p class="rent" id="medium_mandi_price">Mandi Price : $ {{$medium_mandi_price}} per MT</p>
       
       <div class="priceTable">
         <div class="qty">Feature name</div><div class="price">1%</div>
@@ -230,14 +236,14 @@
       <p class="mortgage">Packaging Cost</p>
       <p class="houses">Freight Cost</p>
       <p class="hotelCost">Loadability Cost</p>
-      <input type="hidden" name="CIF_cost" value="{{$medium_CIF_cost}}">
+      <input type="hidden" name="CIF_cost" id="CIF_cost_med_val" value="{{$medium_CIF_cost}}">
       <input type="hidden" name="quality" value="3">
-      <input type="hidden" name="variant_id" value="{{$variant_id}}">
-      <input type="hidden" name="country_id" value="{{$country_id}}">
-      <input type="hidden" name="lodability" value="{{$container}}">
-      <input type="hidden" name="packaging_id" value="{{$packaging_id}}">
-      <input type="hidden" name="product_id" value="{{$product_id}}">
-      <input type="hidden" name="port_id" value="{{$port_id}}">
+      <input type="hidden" name="variant_id" id="variant_id" value="{{$variant_id}}">
+      <input type="hidden" name="country_id" id="country_id" value="{{$country_id}}">
+      <input type="hidden" name="lodability" id="lodability" value="{{$container}}">
+      <input type="hidden" name="packaging_id" id="packaging_id" value="{{$packaging_id}}">
+      <input type="hidden" name="product_id" id="product_id" value="{{$product_id}}">
+      <input type="hidden" name="port_id" id="port_id" value="{{$port_id}}">
       <button type="submit" style="    padding: 10px 0px;
     font-weight: 600;
     color: orange;
@@ -255,9 +261,9 @@
     <details class="card1">
       <summary class="property lightblue">
       <span class="eyebrow">Best Quality</span>
-        ${{$best_CIF_cost}}.00 <span>per MT</span>
+      <span id="best_CIF_cost">${{$best_CIF_cost}}</span>.00 <span>per MT</span>
       </summary>
-      <p class="rent">Mandi Price : ${{$best_mandi_price}} per MT</p>
+      <p class="rent" id="best_mandi_price">Mandi Price : $ {{$best_mandi_price}} per MT</p>
       <div class="priceTable">
         <div class="qty">Feature name</div><div class="price">1%</div>
         <div class="qty">Feature name</div><div class="price">1%</div>
@@ -268,14 +274,14 @@
       <p class="mortgage">Packaging Cost</p>
       <p class="houses">Freight Cost</p>
       <p class="hotelCost">Loadability Cost</p>
-      <input type="hidden" name="CIF_cost" value="{{$best_CIF_cost}}">
+      <input type="hidden" name="CIF_cost" id="CIF_cost_best_val" value="{{$best_CIF_cost}}">
       <input type="hidden" name="quality" value="5">
-      <input type="hidden" name="variant_id" value="{{$variant_id}}">
-      <input type="hidden" name="country_id" value="{{$country_id}}">
-      <input type="hidden" name="lodability" value="{{$container}}">
-      <input type="hidden" name="packaging_id" value="{{$packaging_id}}">
-      <input type="hidden" name="product_id" value="{{$product_id}}">
-      <input type="hidden" name="port_id" value="{{$port_id}}">
+      <input type="hidden" name="variant_id" id="variant_id" value="{{$variant_id}}">
+      <input type="hidden" name="country_id" id="country_id" value="{{$country_id}}">
+      <input type="hidden" name="lodability" id="lodability" value="{{$container}}">
+      <input type="hidden" name="packaging_id" id="packaging_id" value="{{$packaging_id}}">
+      <input type="hidden" name="product_id" id="product_id" value="{{$product_id}}">
+      <input type="hidden" name="port_id" id="port_id" value="{{$port_id}}">
       <button type="submit" href="#" style="    padding: 10px 0px;
     font-weight: 600;
     color: orange;
@@ -292,9 +298,9 @@
     <details class="card1">
       <summary class="property lightblue">
       <span class="eyebrow">Deluxe Quality</span>
-        ${{$deluxe_CIF_cost}}.00 <span>per MT</span>
+      <span id="deluxe_CIF_cost">${{$deluxe_CIF_cost}}</span>.00 <span>per MT</span>
       </summary>
-      <p class="rent">Mandi Price : ${{$delux_mandi_price}} per MT</p>
+      <p class="rent" id="delux_mandi_price">Mandi Price : $ {{$delux_mandi_price}} per MT</p>
       <div class="priceTable">
         <div class="qty">Feature name</div><div class="price">1%</div>
         <div class="qty">Feature name</div><div class="price">1%</div>
@@ -305,14 +311,14 @@
       <p class="mortgage">Packaging Cost</p>
       <p class="houses">Freight Cost</p>
       <p class="hotelCost">Loadability Cost</p>
-      <input type="hidden" name="CIF_cost" value="{{$deluxe_CIF_cost}}">
+      <input type="hidden" name="CIF_cost" id="CIF_cost_dlx_val" value="{{$deluxe_CIF_cost}}">
       <input type="hidden" name="quality" value="4">
-      <input type="hidden" name="variant_id" value="{{$variant_id}}">
-      <input type="hidden" name="country_id" value="{{$country_id}}">
-      <input type="hidden" name="lodability" value="{{$container}}">
-      <input type="hidden" name="packaging_id" value="{{$packaging_id}}">
-      <input type="hidden" name="product_id" value="{{$product_id}}">
-      <input type="hidden" name="port_id" value="{{$port_id}}">
+      <input type="hidden" name="variant_id" id="variant_id" value="{{$variant_id}}">
+      <input type="hidden" name="country_id" id="country_id" value="{{$country_id}}">
+      <input type="hidden" name="lodability" id="lodability" value="{{$container}}">
+      <input type="hidden" name="packaging_id" id="packaging_id" value="{{$packaging_id}}">
+      <input type="hidden" name="product_id" id="product_id" value="{{$product_id}}">
+      <input type="hidden" name="port_id" id="port_id" value="{{$port_id}}">
       <button type="submit" href="#" style="    padding: 10px 0px;
     font-weight: 600;
     color: orange;
@@ -364,15 +370,80 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    
+    $('.variant').click( function() {
+       var variant = $(this).val();
+      // alert(variant);
+       $('#variantc').val(variant);
+    });
 
-    // $("#cifb").submit(function(){
 
-    //   alert("fdsfs");
+    $('.packaging').click( function() {
+       var packaging = $(this).val();
+      // alert(variant);
+       $('#packagingc').val(packaging);
+    });
 
-    //   var dataString = $(this).serialize();
-     
 
-    // });
+  $('#cifb').click( function() {
+  
+    var variant_id = $('#variantc').val();
+    var packaging_id = $('#packagingc').val();
+    var country_id = $('#country_id').val();
+    var port_id = $('#port_id').val();
+    var cantainer_id = $('#cantainer').val();
+    var product_id = $('#prod_id').val();
+    var freight_id = $('#freight_id').val();
+    var loadability = $('#loadability').val();
+    
+   $('#quote_disp').css("display", "block!important");
+    // var data = {"variant": variant_id, "packaging": packaging_id, 
+    // "country": country_id, "port": port_id, "cantainer_id": cantainer_id, "product_id": product_id, 
+    // "freight_id": freight_id, "loadability": loadability};
+      //console.log(data);
+
+      // $.ajaxSetup({
+      //     headers: {
+      //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      //         }
+      //     });
+      
+          $.ajax({
+                  type: "POST",
+                  url: "/completequote-steptwo",
+                  data: {"variant": variant_id, "packaging": packaging_id, 
+    "country": country_id, "port": port_id, "cantainer": cantainer_id, "prod_id": product_id, 
+    "freight_id": freight_id, "loadability": loadability, _token: '{!! csrf_token() !!}', },
+
+                  success: function(data) {
+                      // $('#status').css("display", "block");
+                      // $('#status').text(data['status']);
+                      //alert(data.medium_CIF_cost);
+                      $('#medium_CIF_cost').text(data.medium_CIF_cost);
+                      $('#meidum_mandi_price').text(data.meidum_mandi_price);
+                      $('#CIF_cost_med_val').text(data.medium_CIF_cost);
+
+                      $('#deluxe_CIF_cost').text(data.deluxe_CIF_cost);
+                      $('#delux_mandi_price').text(data.delux_mandi_price);
+                      $('#CIF_cost_dlx_val').text(data.deluxe_CIF_cost);
+
+                      $('#best_CIF_cost').text(data.best_CIF_cost);
+                      $('#best_mandi_price').text(data.best_mandi_price);
+                      $('#CIF_cost_best_val').text(data.best_CIF_cost);
+
+                      $('#variant_id').text(data.variant_id);
+                     // $('#country_id').text(data.country_id);
+                      $('#lodability').text(data.container);
+                      $('#packaging_id').text(data.packaging_id);
+                      $('#product_id').text(data.product_id);
+                     // $('#port_id').text(data.port_id);
+                      
+                      console.log(data);
+                  
+                  },
+              });
+  });
+
   
           // $('.select2').change(function(){
           // var status = $(this).val();
@@ -407,6 +478,12 @@
   });
   
   </script>
+  <script>
+    // $(document).ready(function() {
+    //   //  $("#cifb").trigger('click');
+     
+    // });
+</script>
 @stop
 
 
