@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
  Route::post('/get-quote', 'QuoteController@getQuote');
  Route::post('/completequote', 'QuoteController@completeQuote');
+//  Route::get('/completequote', 'QuoteController@completeQuote');
  Route::post('/completequote-steptwo', 'QuoteController@completeQuoteTwo');
 //  Route::post('/place-order', 'QuoteController@placeOrder');
 
